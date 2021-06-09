@@ -77,11 +77,6 @@ Team.hasMany(Match, { foreignKey: "awayTeamId" });
 Match.belongsTo(Team, { as: "homeTeam" });
 Match.belongsTo(Team, { as: "awayTeam" });
 
-Team.hasMany(Prediction, { foreignKey: "homeTeamId" });
-Team.hasMany(Prediction, { foreignKey: "awayTeamId" });
-Prediction.belongsTo(Team, { as: "homeTeam" });
-Prediction.belongsTo(Team, { as: "awayTeam" });
-
 Match.hasOne(Result);
 Result.belongsTo(Match, { as: "match" });
 
