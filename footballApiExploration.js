@@ -8,10 +8,10 @@ fixtures.response.forEach((match) => {
     id: match.fixture.id,
     homeTeamId: match.teams.home.id,
     awayTeamId: match.teams.away.id,
-    kickoffTimestamp: match.fixture.timestamp,
+    kickoff: match.fixture.date,
   });
 });
-console.log("matches:", matches);
+console.log("matches:", JSON.stringify(matches));
 
 // teams
 const teams = [];
@@ -27,4 +27,4 @@ fixtures.response.forEach((match) => {
   };
   teams.push(awayTeam);
 });
-console.log("teams:", _.uniqBy(teams, "id"));
+// console.log("teams:", _.uniqBy(teams, "id"));

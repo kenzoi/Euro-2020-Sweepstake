@@ -3,216 +3,216 @@
     "id": 657674,
     "homeTeamId": 777,
     "awayTeamId": 768,
-    "kickoffTimestamp": 1623438000
+    "kickoff": "2021-06-11T19:00:00+00:00"
   },
   {
     "id": 657675,
     "homeTeamId": 767,
     "awayTeamId": 15,
-    "kickoffTimestamp": 1623502800
+    "kickoff": "2021-06-12T13:00:00+00:00"
   },
   {
     "id": 657676,
     "homeTeamId": 21,
     "awayTeamId": 1099,
-    "kickoffTimestamp": 1623513600
+    "kickoff": "2021-06-12T16:00:00+00:00"
   },
   {
     "id": 657677,
     "homeTeamId": 1,
     "awayTeamId": 4,
-    "kickoffTimestamp": 1623524400
+    "kickoff": "2021-06-12T19:00:00+00:00"
   },
   {
     "id": 657678,
     "homeTeamId": 10,
     "awayTeamId": 3,
-    "kickoffTimestamp": 1623589200
+    "kickoff": "2021-06-13T13:00:00+00:00"
   },
   {
     "id": 657679,
     "homeTeamId": 775,
     "awayTeamId": 1105,
-    "kickoffTimestamp": 1623600000
+    "kickoff": "2021-06-13T16:00:00+00:00"
   },
   {
     "id": 657680,
     "homeTeamId": 1118,
     "awayTeamId": 772,
-    "kickoffTimestamp": 1623610800
+    "kickoff": "2021-06-13T19:00:00+00:00"
   },
   {
     "id": 657681,
     "homeTeamId": 1108,
     "awayTeamId": 770,
-    "kickoffTimestamp": 1623675600
+    "kickoff": "2021-06-14T13:00:00+00:00"
   },
   {
     "id": 657682,
     "homeTeamId": 24,
     "awayTeamId": 773,
-    "kickoffTimestamp": 1623686400
+    "kickoff": "2021-06-14T16:00:00+00:00"
   },
   {
     "id": 657683,
     "homeTeamId": 9,
     "awayTeamId": 5,
-    "kickoffTimestamp": 1623697200
+    "kickoff": "2021-06-14T19:00:00+00:00"
   },
   {
     "id": 657684,
     "homeTeamId": 769,
     "awayTeamId": 27,
-    "kickoffTimestamp": 1623772800
+    "kickoff": "2021-06-15T16:00:00+00:00"
   },
   {
     "id": 657685,
     "homeTeamId": 2,
     "awayTeamId": 25,
-    "kickoffTimestamp": 1623783600
+    "kickoff": "2021-06-15T19:00:00+00:00"
   },
   {
     "id": 657686,
     "homeTeamId": 1099,
     "awayTeamId": 4,
-    "kickoffTimestamp": 1623848400
+    "kickoff": "2021-06-16T13:00:00+00:00"
   },
   {
     "id": 657687,
     "homeTeamId": 777,
     "awayTeamId": 767,
-    "kickoffTimestamp": 1623859200
+    "kickoff": "2021-06-16T16:00:00+00:00"
   },
   {
     "id": 657688,
     "homeTeamId": 768,
     "awayTeamId": 15,
-    "kickoffTimestamp": 1623870000
+    "kickoff": "2021-06-16T19:00:00+00:00"
   },
   {
     "id": 657689,
     "homeTeamId": 772,
     "awayTeamId": 1105,
-    "kickoffTimestamp": 1623934800
+    "kickoff": "2021-06-17T13:00:00+00:00"
   },
   {
     "id": 657690,
     "homeTeamId": 21,
     "awayTeamId": 1,
-    "kickoffTimestamp": 1623945600
+    "kickoff": "2021-06-17T16:00:00+00:00"
   },
   {
     "id": 657691,
     "homeTeamId": 1118,
     "awayTeamId": 775,
-    "kickoffTimestamp": 1623956400
+    "kickoff": "2021-06-17T19:00:00+00:00"
   },
   {
     "id": 657692,
     "homeTeamId": 5,
     "awayTeamId": 773,
-    "kickoffTimestamp": 1624021200
+    "kickoff": "2021-06-18T13:00:00+00:00"
   },
   {
     "id": 657693,
     "homeTeamId": 3,
     "awayTeamId": 770,
-    "kickoffTimestamp": 1624032000
+    "kickoff": "2021-06-18T16:00:00+00:00"
   },
   {
     "id": 657694,
     "homeTeamId": 10,
     "awayTeamId": 1108,
-    "kickoffTimestamp": 1624042800
+    "kickoff": "2021-06-18T19:00:00+00:00"
   },
   {
     "id": 657695,
     "homeTeamId": 769,
     "awayTeamId": 2,
-    "kickoffTimestamp": 1624107600
+    "kickoff": "2021-06-19T13:00:00+00:00"
   },
   {
     "id": 657696,
     "homeTeamId": 27,
     "awayTeamId": 25,
-    "kickoffTimestamp": 1624118400
+    "kickoff": "2021-06-19T16:00:00+00:00"
   },
   {
     "id": 657697,
     "homeTeamId": 9,
     "awayTeamId": 24,
-    "kickoffTimestamp": 1624129200
+    "kickoff": "2021-06-19T19:00:00+00:00"
   },
   {
     "id": 657698,
     "homeTeamId": 15,
     "awayTeamId": 777,
-    "kickoffTimestamp": 1624204800
+    "kickoff": "2021-06-20T16:00:00+00:00"
   },
   {
     "id": 657699,
     "homeTeamId": 768,
     "awayTeamId": 767,
-    "kickoffTimestamp": 1624204800
+    "kickoff": "2021-06-20T16:00:00+00:00"
   },
   {
     "id": 657700,
     "homeTeamId": 772,
     "awayTeamId": 775,
-    "kickoffTimestamp": 1624291200
+    "kickoff": "2021-06-21T16:00:00+00:00"
   },
   {
     "id": 657701,
     "homeTeamId": 1105,
     "awayTeamId": 1118,
-    "kickoffTimestamp": 1624291200
+    "kickoff": "2021-06-21T16:00:00+00:00"
   },
   {
     "id": 657702,
     "homeTeamId": 4,
     "awayTeamId": 21,
-    "kickoffTimestamp": 1624302000
+    "kickoff": "2021-06-21T19:00:00+00:00"
   },
   {
     "id": 657703,
     "homeTeamId": 1099,
     "awayTeamId": 1,
-    "kickoffTimestamp": 1624302000
+    "kickoff": "2021-06-21T19:00:00+00:00"
   },
   {
     "id": 657704,
     "homeTeamId": 3,
     "awayTeamId": 1108,
-    "kickoffTimestamp": 1624388400
+    "kickoff": "2021-06-22T19:00:00+00:00"
   },
   {
     "id": 657705,
     "homeTeamId": 770,
     "awayTeamId": 10,
-    "kickoffTimestamp": 1624388400
+    "kickoff": "2021-06-22T19:00:00+00:00"
   },
   {
     "id": 657706,
     "homeTeamId": 5,
     "awayTeamId": 24,
-    "kickoffTimestamp": 1624464000
+    "kickoff": "2021-06-23T16:00:00+00:00"
   },
   {
     "id": 657707,
     "homeTeamId": 773,
     "awayTeamId": 9,
-    "kickoffTimestamp": 1624464000
+    "kickoff": "2021-06-23T16:00:00+00:00"
   },
   {
     "id": 657708,
     "homeTeamId": 27,
     "awayTeamId": 2,
-    "kickoffTimestamp": 1624474800
+    "kickoff": "2021-06-23T19:00:00+00:00"
   },
   {
     "id": 657709,
     "homeTeamId": 25,
     "awayTeamId": 769,
-    "kickoffTimestamp": 1624474800
+    "kickoff": "2021-06-23T19:00:00+00:00"
   }
 ]
