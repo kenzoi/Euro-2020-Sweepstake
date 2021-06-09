@@ -28,7 +28,7 @@ const Team = sequelize.define("team", {
 });
 
 const Match = sequelize.define("match", {
-  kickoff: {
+  kickoffTimestamp: {
     type: DataTypes.DATE,
     allowNull: false,
   },
