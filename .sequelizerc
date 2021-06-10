@@ -2,5 +2,6 @@ require("dotenv").config();
 const path = require("path");
 
 module.exports = {
-  config: path.resolve("config", "config.js"),
+  config: path.resolve("backend/config", "config.js"),
+  "seeders-path": path.resolve("backend", "seeders"),
 };
