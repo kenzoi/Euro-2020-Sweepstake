@@ -59,7 +59,24 @@ const User = sequelize.define("user", {
   },
 });
 
-const Pool = sequelize.define("pool", {});
+const Pool = sequelize.define("pool", {
+  nanoId: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+});
+
+// eslint-disable-next-line camelcase
+const User_Pool = sequelize.define(
+  "user_pool",
+  {
+    owner: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+    },
+  },
+  { timestamps: false }
+);
 
 const Prediction = sequelize.define("prediction", {
   homeScore: {
@@ -89,11 +106,8 @@ Prediction.belongsTo(User, { as: "user" });
 Pool.hasMany(Prediction);
 Prediction.belongsTo(Pool, { as: "pool" });
 
-User.hasOne(Pool, { foreignKey: "ownerId" });
-Pool.belongsTo(User, { as: "owner" });
-
-// eslint-disable-next-line camelcase
-const User_Pool = sequelize.define("user_pool", {}, { timestamps: false });
+// User.hasOne(Pool, { foreignKey: "ownerId" });
+// Pool.belongsTo(User, { as: "owner" });
 User.belongsToMany(Pool, { through: User_Pool });
 Pool.belongsToMany(User, { through: User_Pool });
 
@@ -101,6 +115,9 @@ db[Team.name] = Team;
 db[Match.name] = Match;
 db[Result.name] = Result;
 db[User.name] = User;
+db[Pool.name] = Pool;
+// eslint-disable-next-line camelcase
+db[User_Pool.name] = User_Pool;
 db[Prediction.name] = Prediction;
 
 db.sequelize = sequelize;

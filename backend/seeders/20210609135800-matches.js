@@ -1,6 +1,6 @@
 /* eslint-disable global-require */
 module.exports = {
-  up: async (queryInterface, Sequelize) => {
+  up: async (queryInterface) => {
     const matches = require("../mockApiData/matches.json");
     const arr = matches.map((el) => ({
       ...el,
@@ -10,7 +10,7 @@ module.exports = {
     return queryInterface.bulkInsert("matches", arr);
   },
 
-  down: async (queryInterface, Sequelize) => {
+  down: async (queryInterface) => {
     await queryInterface.bulkDelete("matches", null);
   },
 };
