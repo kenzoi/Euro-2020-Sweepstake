@@ -20,7 +20,6 @@ const createPool = async (req, res) => {
   }
 };
 
-// WIP
 const getPools = async (req, res) => {
   try {
     // TODO: get userId from auth middleware instead of body
