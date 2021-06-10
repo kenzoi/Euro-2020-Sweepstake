@@ -3,8 +3,11 @@ const userController = require("./controllers/user");
 const poolController = require("./controllers/pool");
 const matchController = require("./controllers/match");
 const resultController = require("./controllers/result");
+const loginController = require("./controllers/login");
 
 const router = new Router();
+
+router.post("/login", loginController.login);
 
 router.post("/user", userController.createUser);
 
