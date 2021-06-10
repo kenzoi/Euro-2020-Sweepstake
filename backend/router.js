@@ -4,6 +4,7 @@ const poolController = require("./controllers/pool");
 const matchController = require("./controllers/match");
 const resultController = require("./controllers/result");
 const loginController = require("./controllers/login");
+const predictionController = require("./controllers/prediction");
 
 const router = new Router();
 
@@ -18,5 +19,8 @@ router.post("/pool/:nanoId", poolController.joinPool);
 router.get("/matches", matchController.getMatches);
 
 router.get("/result", resultController.getResults);
+
+router.post("/prediction/:poolId", predictionController.addPredictions);
+router.get("/prediction/:poolId", predictionController.getPredictions);
 
 module.exports = router;
