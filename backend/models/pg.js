@@ -37,11 +37,11 @@ const Match = sequelize.define("match", {
 const Result = sequelize.define("result", {
   homeScore: {
     type: DataTypes.INTEGER,
-    allowNull: false,
+    allowNull: true,
   },
   awayScore: {
     type: DataTypes.INTEGER,
-    allowNull: false,
+    allowNull: true,
   },
 });
 
