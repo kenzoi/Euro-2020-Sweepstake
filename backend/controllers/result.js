@@ -2,17 +2,13 @@ const db = require("../models/pg");
 
 const getResults = async (req, res) => {
   try {
-    const data = await db.result.findAll({
-      attributes: ["id", "homeScore", "awayScore"],
-      include: {
-        model: db.match,
-        as: "match",
-        attributes: ["id", "kickoff"],
-        include: [
-          { model: db.team, attributes: ["name"], as: "homeTeam" },
-          { model: db.team, attributes: ["name"], as: "awayTeam" },
-        ],
-      },
+    const data = await db.match.findAll({
+      attributes: ["id", "kickoff"],
+      include: [
+        { model: db.team, attributes: ["name"], as: "homeTeam" },
+        { model: db.team, attributes: ["name"], as: "awayTeam" },
+        { model: db.result, attributes: ["homeScore", "awayScore"] },
+      ],
     });
     res.status(200).json(data);
   } catch (e) {
