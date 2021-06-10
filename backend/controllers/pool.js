@@ -28,7 +28,12 @@ const getPools = async (req, res) => {
     const pools = await db.user.findOne({
       where: { id },
       attributes: ["id", "email", "name"],
-      include: [{ model: db.pool, attributes: ["nanoId"], as: "pool" }],
+      include: {
+        model: db.pool,
+        attributes: ["id", "nanoId"],
+        // TODO: see if there is a better way to include the pool owner
+        // include: { model: db.user_pool, attributes: ["owner"] },
+      },
     });
     res.status(200).json(pools);
   } catch (e) {
