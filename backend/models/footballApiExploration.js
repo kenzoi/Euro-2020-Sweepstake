@@ -1,5 +1,5 @@
 const _ = require("lodash");
-const fixtures = require("./mockApiData/fixtures.json");
+const fixtures = require("../mockApiData/fixtures.json");
 
 // matches
 const matches = [];
@@ -11,6 +11,7 @@ fixtures.response.forEach((match) => {
     kickoff: match.fixture.date,
   });
 });
+// eslint-disable-next-line no-console
 console.log("matches:", JSON.stringify(matches));
 
 // teams
@@ -27,4 +28,5 @@ fixtures.response.forEach((match) => {
   };
   teams.push(awayTeam);
 });
-// console.log("teams:", _.uniqBy(teams, "id"));
+// eslint-disable-next-line no-console
+console.log("teams:", _.uniqBy(teams, "id"));

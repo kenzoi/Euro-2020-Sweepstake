@@ -8,7 +8,7 @@ const router = new Router();
 router.post("/user", userController.createUser);
 
 router.post("/pool", poolController.createPool);
-router.get("/pool", poolController.getPool);
+router.get("/pool", poolController.getPools);
 router.post("/pool/:nanoId", poolController.joinPool);
 
 router.get("/matches", matchController.getMatches);

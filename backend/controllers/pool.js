@@ -21,10 +21,14 @@ const createPool = async (req, res) => {
 };
 
 // WIP
-const getPool = async (req, res) => {
+const getPools = async (req, res) => {
   try {
-    const pools = await db.pools.findAll({
-      where: { email: "test@example.com" },
+    // TODO: get userId from auth middleware instead of body
+    const { id } = req.body;
+    const pools = await db.user.findOne({
+      where: { id },
+      attributes: ["id", "email", "name"],
+      include: [{ model: db.pool, attributes: ["nanoId"], as: "pool" }],
     });
     res.status(200).json(pools);
   } catch (e) {
@@ -56,6 +60,6 @@ const joinPool = async (req, res) => {
 
 module.exports = {
   createPool,
-  getPool,
+  getPools,
   joinPool,
 };
