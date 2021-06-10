@@ -9,7 +9,7 @@ client.on("error", (e) => {
 
 const setCache = (data) =>
   new Promise((resolve, reject) => {
-    client.setex("apiData", 3600, data, (err, res) => {
+    client.setex("apiData", process.env.REDIS_TTL, data, (err, res) => {
       if (err) reject(err);
       resolve(res);
     });
