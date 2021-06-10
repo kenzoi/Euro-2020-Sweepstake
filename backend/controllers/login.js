@@ -1,10 +1,17 @@
 const { getFixtures } = require("../apiClient/axios");
-const { matches } = require("../apiClient/helper");
+const { setCache, getCache } = require("../models/redis");
 
 const login = async (req, res) => {
   try {
-    const { response } = await getFixtures();
-    res.status(200).json(matches(response));
+    const inCache = await getCache();
+    if (inCache) {
+      res.status(200).send(JSON.parse(inCache));
+    } else {
+      const { response } = await getFixtures();
+      const data = JSON.stringify(response);
+      await setCache(data);
+      res.status(200).send(JSON.parse(data));
+    }
   } catch (e) {
     // eslint-disable-next-line no-console
     console.log(e);
