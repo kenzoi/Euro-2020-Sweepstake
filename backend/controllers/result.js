@@ -1,7 +1,20 @@
-// TODO: add db query to get data from pg
-const getResults = (req, res) => {
+const db = require("../models/pg");
+
+const getResults = async (req, res) => {
   try {
-    res.status(200).json({ message: "Success" });
+    const data = await db.result.findAll({
+      attributes: ["id", "homeScore", "awayScore"],
+      include: {
+        model: db.match,
+        as: "match",
+        attributes: ["id", "kickoff"],
+        include: [
+          { model: db.team, attributes: ["name"], as: "homeTeam" },
+          { model: db.team, attributes: ["name"], as: "awayTeam" },
+        ],
+      },
+    });
+    res.status(200).json(data);
   } catch (e) {
     // eslint-disable-next-line no-console
     console.log(e);

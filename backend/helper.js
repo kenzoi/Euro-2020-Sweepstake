@@ -59,8 +59,8 @@ const dbUpsert = async (data) => {
 
   const resultData = results(data);
   db.result.bulkCreate(resultData, {
-    fields: ["id", "homeScore", "awayScore"],
-    updateOnDuplicate: ["id", "homeScore", "awayScore", "updatedAt"],
+    fields: ["id", "homeScore", "awayScore", "matchId"],
+    updateOnDuplicate: ["id", "homeScore", "awayScore", "matchId", "updatedAt"],
   });
 };
 
