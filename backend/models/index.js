@@ -106,8 +106,6 @@ Prediction.belongsTo(User, { as: "user" });
 Pool.hasMany(Prediction);
 Prediction.belongsTo(Pool, { as: "pool" });
 
-// User.hasOne(Pool, { foreignKey: "ownerId" });
-// Pool.belongsTo(User, { as: "owner" });
 User.belongsToMany(Pool, { through: User_Pool });
 Pool.belongsToMany(User, { through: User_Pool });
 
