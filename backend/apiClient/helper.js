@@ -1,36 +1,36 @@
 const _ = require("lodash");
 
-const matchesJSON = (data) => {
-  const matches = [];
+const matches = (data) => {
+  const arr = [];
   data.forEach((match) => {
-    matches.push({
+    arr.push({
       id: match.fixture.id,
       homeTeamId: match.teams.home.id,
       awayTeamId: match.teams.away.id,
       kickoff: match.fixture.date,
     });
   });
-  return JSON.stringify(matches);
+  return arr;
 };
 
-const teamsJSON = (data) => {
-  const teams = [];
+const teams = (data) => {
+  const arr = [];
   data.forEach((match) => {
     const homeTeam = {
       id: match.teams.home.id,
       name: match.teams.home.name,
     };
-    teams.push(homeTeam);
+    arr.push(homeTeam);
     const awayTeam = {
       id: match.teams.away.id,
       name: match.teams.away.name,
     };
-    teams.push(awayTeam);
+    arr.push(awayTeam);
   });
-  return JSON.stringify(_.uniqBy(teams, "id"));
+  return _.uniqBy(arr, "id");
 };
 
 module.exports = {
-  matchesJSON,
-  teamsJSON,
+  matches,
+  teams,
 };

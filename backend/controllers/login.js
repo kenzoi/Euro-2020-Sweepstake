@@ -1,12 +1,10 @@
 const { getFixtures } = require("../apiClient/axios");
-const { matchesJSON } = require("../apiClient/helper");
+const { matches } = require("../apiClient/helper");
 
 const login = async (req, res) => {
   try {
     const { response } = await getFixtures();
-    // eslint-disable-next-line no-console
-    console.log(matchesJSON(response));
-    res.status(200).json({ message: "Success" });
+    res.status(200).json(matches(response));
   } catch (e) {
     // eslint-disable-next-line no-console
     console.log(e);

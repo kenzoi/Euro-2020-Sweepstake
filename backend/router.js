@@ -1,4 +1,5 @@
 const { Router } = require("express");
+const cache = require("express-redis-cache")();
 const userController = require("./controllers/user");
 const poolController = require("./controllers/pool");
 const matchController = require("./controllers/match");
@@ -7,7 +8,7 @@ const loginController = require("./controllers/login");
 
 const router = new Router();
 
-router.post("/login", loginController.login);
+router.post("/login", cache.route(1800), loginController.login);
 
 router.post("/user", userController.createUser);
 
