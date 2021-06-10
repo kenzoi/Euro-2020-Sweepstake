@@ -1,5 +1,5 @@
 const { nanoid } = require("nanoid");
-const db = require("../models");
+const db = require("../models/pg");
 
 const createPool = async (req, res) => {
   try {

@@ -1,4 +1,4 @@
-const db = require("../models");
+const db = require("../models/pg");
 
 const getMatches = async (req, res) => {
   try {

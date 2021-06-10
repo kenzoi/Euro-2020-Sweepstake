@@ -1,4 +1,4 @@
-const db = require("../models");
+const db = require("../models/pg");
 
 const createUser = async (req, res) => {
   try {
