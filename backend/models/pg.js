@@ -81,11 +81,11 @@ const User_Pool = sequelize.define(
 const Prediction = sequelize.define("prediction", {
   homeScore: {
     type: DataTypes.INTEGER,
-    allowNull: false,
+    allowNull: true,
   },
   awayScore: {
     type: DataTypes.INTEGER,
-    allowNull: false,
+    allowNull: true,
   },
 });
 

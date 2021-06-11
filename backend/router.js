@@ -16,11 +16,12 @@ router.post("/pool", poolController.createPool);
 router.get("/pool", poolController.getPools);
 router.post("/pool/:nanoId", poolController.joinPool);
 
-router.get("/matches", matchController.getMatches);
+router.get("/match", matchController.getMatches);
 
 router.get("/result", resultController.getResults);
 
 router.post("/prediction/:poolId", predictionController.addPredictions);
+router.put("/prediction/:poolId", predictionController.updatePredictions);
 router.get("/prediction/:poolId", predictionController.getPredictions);
 
 module.exports = router;
