@@ -1,9 +1,7 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 import Home from "./components/Home";
-import Leaderboard from "./components/Leaderboard";
 import Navbar from "./components/Navbar";
-import PredictionList from "./components/PredictionList";
 import Profile from "./components/Profile";
 
 function App() {
@@ -12,12 +10,6 @@ function App() {
       <div className="app__container">
         <Navbar />
         <Switch>
-          <Route path="/leaderboard">
-            <Leaderboard />
-          </Route>
-          <Route path="/prediction">
-            <PredictionList />
-          </Route>
           <Route path="/profile">
             <Profile />
           </Route>

@@ -33,6 +33,7 @@ const getPools = async (req, res) => {
         attributes: ["id", "nanoId"],
         include: {
           model: db.prediction,
+          required: false,
           attributes: ["id", "homeScore", "awayScore"],
           where: { userId },
           include: {
