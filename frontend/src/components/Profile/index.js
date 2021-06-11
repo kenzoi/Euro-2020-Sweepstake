@@ -6,8 +6,6 @@ import "./style.css";
 
 function Profile() {
   const [data, setData] = useState();
-  // TODO: Find better solution to rerender when new pool is created
-  const [render, setRender] = useState();
 
   useEffect(() => {
     const ayncInUseEffect = async () => {
@@ -16,11 +14,11 @@ function Profile() {
       setData(res.data.pools);
     };
     ayncInUseEffect();
-  }, [render]);
+  }, []);
 
   const submitHandler = async () => {
-    await postPools(1);
-    setRender({});
+    const res = await postPools(1);
+    setData(res.data.pools);
   };
 
   return (
