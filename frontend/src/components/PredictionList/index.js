@@ -4,13 +4,16 @@ import getMatch from "../../httpClient/axios";
 import "./style.css";
 
 function PredictionList() {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState({});
 
   useEffect(() => {
     const ayncInUseEffect = async () => {
       const res = await getMatch();
-      console.log(res.data);
-      setData(res.data);
+      const dataObj = res.data.reduce((acc, curr) => {
+        // eslint-disable-next-line no-sequences
+        return (acc[curr.id] = curr), acc;
+      }, {});
+      setData(dataObj);
     };
     ayncInUseEffect();
   }, []);
@@ -18,7 +21,9 @@ function PredictionList() {
   return (
     <div className="prediction-list__container">
       {data
-        ? data.map((match) => <PredictionItem key={match.id} match={match} />)
+        ? Object.keys(data).map((matchId) => (
+            <PredictionItem key={data[matchId].id} match={data[matchId]} />
+          ))
         : null}
     </div>
   );
