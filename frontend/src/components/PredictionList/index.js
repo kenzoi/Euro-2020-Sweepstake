@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import PredictionItem from "../PredictionItem";
-import { getMatch, getPredictions } from "../../httpClient/axios";
+import {
+  getMatch,
+  getPredictions,
+  postPredictions,
+} from "../../httpClient/axios";
 import "./style.css";
 
 function PredictionList() {
@@ -10,6 +14,7 @@ function PredictionList() {
   useEffect(() => {
     const ayncInUseEffect = async () => {
       const existingPredictions = await getPredictions("es1qa3SGNB", 1);
+      console.log(existingPredictions);
       if (!!existingPredictions.data.length) setHasPrediction(true);
       else {
         const res = await getMatch();
@@ -30,11 +35,25 @@ function PredictionList() {
 
   // TODO: for submit, if hasPrediction PUT else POST
   const handleSubmit = () => {
+    // convert object back to array
+    const dataArr = Object.values(data);
+    const dataToSend = dataArr.map((match) => {
+      return {
+        matchId: match.id,
+        homeScore: match.homeScore,
+        awayScore: match.awayScore,
+      };
+    });
+    console.log(dataToSend);
+    console.log(hasPrediction);
+
     if (hasPrediction) {
       // PUT
+      // putPredictions("es1qa3SGNB", 1, dataToSend);
     } else {
       setHasPrediction(true);
       // POST
+      postPredictions("es1qa3SGNB", 1, dataToSend);
     }
   };
 

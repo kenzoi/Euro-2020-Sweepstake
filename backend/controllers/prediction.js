@@ -3,7 +3,7 @@ const db = require("../models/pg");
 const addPredictions = async (req, res) => {
   try {
     const { poolId, userId } = req.params;
-    const { predictions } = req.body;
+    const { predictions } = req.body.data;
     const poolExists = await db.pool.findOne({ where: { nanoId: poolId } });
     if (poolExists) {
       const data = predictions.map((prediction) => ({
@@ -60,7 +60,6 @@ const updatePredictions = async (req, res) => {
 
 const getPredictions = async (req, res) => {
   try {
-    // const userId = 1;
     const { poolId, userId } = req.params;
     const data = await db.prediction.findAll({
       where: { userId },
