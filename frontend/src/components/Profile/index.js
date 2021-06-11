@@ -18,8 +18,6 @@ function Profile() {
     ayncInUseEffect();
   }, [render]);
 
-  console.log(render);
-
   const submitHandler = async () => {
     await postPools(1);
     setRender({});
