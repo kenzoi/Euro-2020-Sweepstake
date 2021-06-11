@@ -1,8 +1,8 @@
-.pool__container {
+.pool-list__container {
   border: 1px solid red;
 }
 
-.pool__list {
+.pool-list__item {
   display: flex;
   justify-content: center;
 }

@@ -15,14 +15,14 @@ function PoolList() {
 
   const pools = data
     ? data.map((pool) => (
-        <div className="pool__list" key={pool.id}>
+        <div className="pool-list__item" key={pool.id}>
           <div>{pool.nanoId}</div>
           {/* <div>Owner: {JSON.stringify(pool.user_pool.owner)}</div> */}
         </div>
       ))
     : null;
 
-  return <div className="pool__container">{pools}</div>;
+  return <div className="pool-list__container">{pools}</div>;
 }
 
 export default PoolList;
