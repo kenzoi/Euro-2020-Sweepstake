@@ -28,7 +28,7 @@ const addPredictions = async (req, res) => {
 const updatePredictions = async (req, res) => {
   try {
     const { poolId, userId } = req.params;
-    const { predictions } = req.body;
+    const { predictions } = req.body.data;
     const poolExists = await db.pool.findOne({ where: { nanoId: poolId } });
     if (poolExists) {
       const data = predictions.map((prediction) => ({

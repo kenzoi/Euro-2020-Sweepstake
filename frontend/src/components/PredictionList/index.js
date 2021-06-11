@@ -14,11 +14,11 @@ function PredictionList() {
 
   useEffect(() => {
     const ayncInUseEffect = async () => {
-      const res = await getPredictions("es1qa3SGNB", 1);
+      const res = await getPredictions("lud0A2jyGF", 1);
+      // console.log("INCOMING DATA!:", res.data.predictions);
       const matchData = !!res.data
         ? withPredictions(res.data.predictions)
         : await withoutPredictions();
-      console.log(matchData);
       const dataObj = matchData.reduce((acc, curr) => {
         // eslint-disable-next-line no-sequences
         return (acc[curr.id] = curr), acc;
@@ -51,7 +51,7 @@ function PredictionList() {
   const handleSubmit = async () => {
     const dataArr = Object.values(data);
     if (hasPrediction) {
-      // PUT
+      console.log("dataArr:", dataArr);
       const test = dataArr.map((prediction) => {
         return {
           id: prediction.id,
@@ -60,12 +60,15 @@ function PredictionList() {
           awayScore: parseInt(prediction.awayScore),
         };
       });
-      console.log("test:", test);
-      putPredictions("es1qa3SGNB", 1, test);
+      console.log("PUT:", test);
+      try {
+        await putPredictions("lud0A2jyGF", 1, test);
+      } catch (e) {
+        console.log(e);
+      }
     } else {
-      // POST
       await postPredictions(
-        "es1qa3SGNB",
+        "lud0A2jyGF",
         1,
         dataArr.map((match) => {
           return {
