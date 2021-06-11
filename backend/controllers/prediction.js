@@ -61,18 +61,23 @@ const updatePredictions = async (req, res) => {
 const getPredictions = async (req, res) => {
   try {
     const { poolId, userId } = req.params;
-    const data = await db.match.findAll({
-      attributes: ["id", "kickoff"],
-      include: [
-        { model: db.team, attributes: ["name"], as: "homeTeam" },
-        { model: db.team, attributes: ["name"], as: "awayTeam" },
-        {
-          model: db.prediction,
-          attributes: ["id", "homeScore", "awayScore"],
-          where: { userId },
-          include: { model: db.pool, where: { nanoId: poolId }, as: "pool" },
+    const data = await db.pool.findOne({
+      attributes: ["nanoId"],
+      where: { nanoId: poolId },
+      include: {
+        model: db.prediction,
+        attributes: ["id", "homeScore", "awayScore"],
+        where: { userId },
+        include: {
+          model: db.match,
+          attributes: ["id", "kickoff"],
+          as: "match",
+          include: [
+            { model: db.team, attributes: ["name"], as: "homeTeam" },
+            { model: db.team, attributes: ["name"], as: "awayTeam" },
+          ],
         },
-      ],
+      },
     });
     res.status(200).json(data);
   } catch (e) {

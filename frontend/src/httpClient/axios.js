@@ -2,7 +2,7 @@ import axios from "axios";
 
 const base_url = process.env.REACT_APP_BACKEND_API_HOST;
 
-export const getMatch = () => {
+export const getMatches = () => {
   return axios.get(`${base_url}/match`);
 };
 
