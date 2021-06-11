@@ -9,8 +9,8 @@ function PoolList() {
   useEffect(() => {
     const ayncInUseEffect = async () => {
       // TODO: dynamically pass the user
-      const res = await getPools(1);
-      setData(res.data.pools);
+      const { data } = await getPools(1);
+      setData(data.pools);
     };
     ayncInUseEffect();
   }, []);

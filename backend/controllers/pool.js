@@ -28,10 +28,23 @@ const getPools = async (req, res) => {
       where: { id: userId },
       attributes: [],
       include: {
+        // TODO: see if there is a better way to include the pool owner
         model: db.pool,
         attributes: ["id", "nanoId"],
-        // TODO: see if there is a better way to include the pool owner
-        // include: { model: db.user_pool, attributes: ["owner"] },
+        include: {
+          model: db.prediction,
+          attributes: ["id", "homeScore", "awayScore"],
+          where: { userId },
+          include: {
+            model: db.match,
+            attributes: ["id", "kickoff"],
+            as: "match",
+            include: [
+              { model: db.team, attributes: ["name"], as: "homeTeam" },
+              { model: db.team, attributes: ["name"], as: "awayTeam" },
+            ],
+          },
+        },
       },
     });
     res.status(200).json(pools);
