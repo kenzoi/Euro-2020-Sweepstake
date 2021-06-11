@@ -1,0 +1,18 @@
+.prediction-item__date {
+  padding: 0.25rem;
+}
+
+.prediction-item__teams {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  padding-top: 0.25rem;
+}
+
+.prediction-item__team {
+  padding: 0.25rem;
+}
+
+.prediction-item__input {
+  width: 3rem;
+}

@@ -4,7 +4,7 @@ import Home from "./components/Home";
 import Leaderboard from "./components/Leaderboard";
 import Navbar from "./components/Navbar";
 import Pool from "./components/Pool";
-import Prediction from "./components/Prediction";
+import PredictionList from "./components/PredictionList";
 import Profile from "./components/Profile";
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
             <Pool />
           </Route>
           <Route path="/prediction">
-            <Prediction />
+            <PredictionList />
           </Route>
           <Route path="/profile">
             <Profile />
