@@ -26,8 +26,8 @@ function PredictionItem({ id, data, setData }) {
           min="0"
           max="99"
           size="2"
-          value={data[id].homeScore}
-          onChange={(e) => handleUpdate(e)}
+          value={data[id].homeScore || 0}
+          onChange={handleUpdate}
         ></input>
         <input
           name="awayScore"
@@ -36,7 +36,7 @@ function PredictionItem({ id, data, setData }) {
           min="0"
           max="99"
           size="2"
-          value={data[id].awayScore}
+          value={data[id].awayScore || 0}
           onChange={handleUpdate}
         ></input>
         <div className="prediction-item__team">{data[id].awayTeam.name}</div>
