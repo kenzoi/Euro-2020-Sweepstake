@@ -15,7 +15,6 @@ function PredictionList() {
   useEffect(() => {
     const ayncInUseEffect = async () => {
       const res = await getPredictions("lud0A2jyGF", 1);
-      // console.log("INCOMING DATA!:", res.data.predictions);
       const matchData = !!res.data
         ? withPredictions(res.data.predictions)
         : await withoutPredictions();
@@ -51,21 +50,18 @@ function PredictionList() {
   const handleSubmit = async () => {
     const dataArr = Object.values(data);
     if (hasPrediction) {
-      console.log("dataArr:", dataArr);
-      const test = dataArr.map((prediction) => {
-        return {
-          id: prediction.id,
-          matchId: prediction.matchId,
-          homeScore: parseInt(prediction.homeScore),
-          awayScore: parseInt(prediction.awayScore),
-        };
-      });
-      console.log("PUT:", test);
-      try {
-        await putPredictions("lud0A2jyGF", 1, test);
-      } catch (e) {
-        console.log(e);
-      }
+      await putPredictions(
+        "lud0A2jyGF",
+        1,
+        dataArr.map((prediction) => {
+          return {
+            id: prediction.id,
+            matchId: prediction.matchId,
+            homeScore: parseInt(prediction.homeScore),
+            awayScore: parseInt(prediction.awayScore),
+          };
+        })
+      );
     } else {
       await postPredictions(
         "lud0A2jyGF",
