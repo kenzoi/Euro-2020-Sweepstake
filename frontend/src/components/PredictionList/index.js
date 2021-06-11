@@ -14,6 +14,7 @@ function PredictionList() {
 
   useEffect(() => {
     const ayncInUseEffect = async () => {
+      // TODO: make pools and users dynamic
       const res = await getPredictions("lud0A2jyGF", 1);
       const matchData = !!res.data
         ? withPredictions(res.data.predictions)
@@ -50,6 +51,7 @@ function PredictionList() {
   const handleSubmit = async () => {
     const dataArr = Object.values(data);
     if (hasPrediction) {
+      // TODO: make pools and users dynamic
       await putPredictions(
         "lud0A2jyGF",
         1,
@@ -63,6 +65,7 @@ function PredictionList() {
         })
       );
     } else {
+      // TODO: make pools and users dynamic
       await postPredictions(
         "lud0A2jyGF",
         1,
