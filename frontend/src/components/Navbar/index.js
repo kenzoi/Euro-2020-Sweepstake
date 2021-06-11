@@ -11,9 +11,6 @@ function Navbar() {
       <Link className="navbar__item" to="/leaderboard">
         Leaderboard
       </Link>
-      <Link className="navbar__item" to="/pool">
-        Pool
-      </Link>
       <Link className="navbar__item" to="/prediction">
         Prediction
       </Link>

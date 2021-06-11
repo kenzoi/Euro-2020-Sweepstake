@@ -25,3 +25,15 @@ export const putPredictions = (pool, user, predictions) => {
     },
   });
 };
+
+export const getPools = (userId) => {
+  return axios.get(`${base_url}/pool/user/${userId}`);
+};
+
+export const postPools = (userId) => {
+  return axios.post(`${base_url}/pool/user/${userId}`);
+};
+
+export const putPools = (poolId, userId) => {
+  return axios.put(`${base_url}/pool/${poolId}/user/${userId}`);
+};

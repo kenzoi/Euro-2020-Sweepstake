@@ -3,7 +3,6 @@ import "./App.css";
 import Home from "./components/Home";
 import Leaderboard from "./components/Leaderboard";
 import Navbar from "./components/Navbar";
-import Pool from "./components/Pool";
 import PredictionList from "./components/PredictionList";
 import Profile from "./components/Profile";
 
@@ -15,9 +14,6 @@ function App() {
         <Switch>
           <Route path="/leaderboard">
             <Leaderboard />
-          </Route>
-          <Route path="/pool">
-            <Pool />
           </Route>
           <Route path="/prediction">
             <PredictionList />
