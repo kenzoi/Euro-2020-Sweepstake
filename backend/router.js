@@ -20,8 +20,17 @@ router.get("/match", matchController.getMatches);
 
 router.get("/result", resultController.getResults);
 
-router.post("/prediction/:poolId", predictionController.addPredictions);
-router.put("/prediction/:poolId", predictionController.updatePredictions);
-router.get("/prediction/:poolId", predictionController.getPredictions);
+router.post(
+  "/prediction/:poolId/user/:userId",
+  predictionController.addPredictions
+);
+router.put(
+  "/prediction/:poolId/user/:userId",
+  predictionController.updatePredictions
+);
+router.get(
+  "/prediction/:poolId/user/:userId",
+  predictionController.getPredictions
+);
 
 module.exports = router;
