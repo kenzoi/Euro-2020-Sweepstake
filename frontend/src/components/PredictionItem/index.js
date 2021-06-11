@@ -1,31 +1,45 @@
 import moment from "moment";
 import "./style.css";
 
-function PredictionItem({ match }) {
+function PredictionItem({ id, data, setData }) {
+  const handleUpdate = (e) => {
+    setData({
+      ...data,
+      [id]: {
+        ...data[id],
+        [e.target.name]: e.target.value,
+      },
+    });
+  };
+
   return (
     <div>
       <div className="prediction-item__date">
-        {moment(match.kickoff).format("LLLL")}
+        {moment(data[id].kickoff).format("LLLL")}
       </div>
       <div className="prediction-item__teams">
-        <div className="prediction-item__team">{match.homeTeam.name}</div>
+        <div className="prediction-item__team">{data[id].homeTeam.name}</div>
         <input
-          name="homeTeam"
+          name="homeScore"
           className="prediction-item__input"
           type="number"
           min="0"
           max="99"
           size="2"
+          value={data[id].homeScore}
+          onChange={(e) => handleUpdate(e)}
         ></input>
         <input
-          name="awayTeam"
+          name="awayScore"
           className="prediction-item__input"
           type="number"
           min="0"
           max="99"
           size="2"
+          value={data[id].awayScore}
+          onChange={handleUpdate}
         ></input>
-        <div className="prediction-item__team">{match.awayTeam.name}</div>
+        <div className="prediction-item__team">{data[id].awayTeam.name}</div>
       </div>
     </div>
   );

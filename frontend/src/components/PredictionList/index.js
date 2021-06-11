@@ -22,7 +22,12 @@ function PredictionList() {
     <div className="prediction-list__container">
       {data
         ? Object.keys(data).map((matchId) => (
-            <PredictionItem key={data[matchId].id} match={data[matchId]} />
+            <PredictionItem
+              key={data[matchId].id}
+              id={data[matchId].id}
+              data={data}
+              setData={setData}
+            />
           ))
         : null}
     </div>
