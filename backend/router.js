@@ -12,9 +12,9 @@ router.post("/login", loginController.login);
 
 router.post("/user", userController.createUser);
 
-router.post("/pool", poolController.createPool);
-router.get("/pool", poolController.getPools);
-router.post("/pool/:nanoId", poolController.joinPool);
+router.post("/pool/user/:userId", poolController.createPool);
+router.get("/pool/user/:userId", poolController.getPools);
+router.post("/pool/:nanoId/user/:userId", poolController.joinPool);
 
 router.get("/match", matchController.getMatches);
 

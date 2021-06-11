@@ -3,10 +3,10 @@ const db = require("../models/pg");
 
 const createPool = async (req, res) => {
   try {
-    // TODO: get userId from auth middleware instead of body
-    const { id } = req.body;
+    // TODO: get userId from auth middleware instead of params
+    const { userId } = req.params;
     const user = await db.user.findOne({
-      where: { id },
+      where: { id: userId },
     });
     const pool = await db.pool.create({
       nanoId: nanoid(10),
@@ -22,11 +22,11 @@ const createPool = async (req, res) => {
 
 const getPools = async (req, res) => {
   try {
-    // TODO: get userId from auth middleware instead of body
-    const { id } = req.body;
+    // TODO: get userId from auth middleware instead of params
+    const { userId } = req.params;
     const pools = await db.user.findOne({
-      where: { id },
-      attributes: ["id", "email", "name"],
+      where: { id: userId },
+      attributes: [],
       include: {
         model: db.pool,
         attributes: ["id", "nanoId"],
@@ -44,11 +44,10 @@ const getPools = async (req, res) => {
 
 const joinPool = async (req, res) => {
   try {
-    // TODO: get userId from auth middleware instead of body
-    const { id } = req.body;
-    const { nanoId } = req.params;
+    // TODO: get userId from auth middleware instead of params
+    const { nanoId, userId } = req.params;
     const user = await db.user.findOne({
-      where: { id },
+      where: { id: userId },
     });
     const pool = await db.pool.findOne({
       where: { nanoId },
