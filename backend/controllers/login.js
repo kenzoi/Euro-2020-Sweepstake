@@ -6,6 +6,7 @@ const login = async (req, res) => {
   try {
     const inCache = await getCache();
     if (inCache) {
+      await dbUpsert(JSON.parse(inCache));
       res.status(200).send(JSON.parse(inCache));
     } else {
       const { response } = await getFixtures();

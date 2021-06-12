@@ -35,12 +35,15 @@ const matches = (data) => {
 const results = (data) => {
   const arr = [];
   data.forEach((result) => {
-    arr.push({
-      id: result.fixture.id,
-      homeScore: result.goals.home,
-      awayScore: result.goals.away,
-      matchId: result.fixture.id,
-    });
+    // "FT" "AET" "PEN"
+    if (result.status.short === "FT") {
+      arr.push({
+        id: result.fixture.id,
+        homeScore: result.goals.home,
+        awayScore: result.goals.away,
+        matchId: result.fixture.id,
+      });
+    }
   });
   return arr;
 };

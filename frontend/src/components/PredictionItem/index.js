@@ -13,33 +13,39 @@ function PredictionItem({ id, data, setData }) {
   };
 
   return (
-    <div>
+    <div className="prediction-item__container">
       <div className="prediction-item__date">
         {moment(data[id].kickoff).format("LLLL")}
       </div>
-      <div className="prediction-item__teams">
-        <div className="prediction-item__team">{data[id].homeTeam.name}</div>
-        <input
-          name="homeScore"
-          className="prediction-item__input"
-          type="number"
-          min="0"
-          max="99"
-          size="2"
-          value={data[id].homeScore}
-          onChange={handleUpdate}
-        ></input>
-        <input
-          name="awayScore"
-          className="prediction-item__input"
-          type="number"
-          min="0"
-          max="99"
-          size="2"
-          value={data[id].awayScore}
-          onChange={handleUpdate}
-        ></input>
-        <div className="prediction-item__team">{data[id].awayTeam.name}</div>
+      <div className="prediction-item__box-container">
+        <div className="prediction-item__box">
+          <span>{data[id].homeTeam.name}</span>
+        </div>
+        <div className="prediction-item__box">
+          <input
+            name="homeScore"
+            className="prediction-item__input"
+            type="number"
+            min="0"
+            max="99"
+            size="2"
+            value={data[id].homeScore}
+            onChange={handleUpdate}
+          ></input>
+          <input
+            name="awayScore"
+            className="prediction-item__input"
+            type="number"
+            min="0"
+            max="99"
+            size="2"
+            value={data[id].awayScore}
+            onChange={handleUpdate}
+          ></input>
+        </div>
+        <div className="prediction-item__box">
+          <span>{data[id].awayTeam.name}</span>
+        </div>
       </div>
     </div>
   );
