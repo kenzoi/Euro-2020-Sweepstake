@@ -43,6 +43,7 @@ function PredictionList() {
   };
 
   const withoutPredictions = async () => {
+    setHasPrediction(false);
     const { data } = await getMatches();
     return data.map((match) => ({
       ...match,
