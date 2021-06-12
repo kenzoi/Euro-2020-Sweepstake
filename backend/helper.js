@@ -1,4 +1,5 @@
 const _ = require("lodash");
+const { Op } = require("sequelize");
 const db = require("./models/pg");
 
 const teams = (data) => {
@@ -44,6 +45,40 @@ const results = (data) => {
   return arr;
 };
 
+const addScores = async (data) => {
+  const matchesWithScores = data.filter(
+    (match) => match.homeScore !== null && match.awayScore !== null
+  );
+
+  const dbMatchIds = matchesWithScores.map((match) => match.id);
+
+  const predictionsToAddScores = await db.prediction.findAll({
+    where: { matchId: dbMatchIds },
+  });
+
+  const rowsToAddPoints = _.flattenDeep(
+    predictionsToAddScores.map((prediction) =>
+      matchesWithScores.map((match) => {
+        if (
+          match.id === prediction.matchId &&
+          match.homeScore === prediction.homeScore &&
+          match.awayScore === prediction.awayScore
+        )
+          return prediction.id;
+      })
+    )
+  ).filter((item) => item !== undefined);
+
+  await db.prediction.update(
+    {
+      pointsScored: 1,
+    },
+    {
+      where: { id: { [Op.in]: rowsToAddPoints } },
+    }
+  );
+};
+
 const dbUpsert = async (data) => {
   const teamData = teams(data);
   await db.team.bulkCreate(teamData, {
@@ -62,6 +97,8 @@ const dbUpsert = async (data) => {
     fields: ["id", "homeScore", "awayScore", "matchId"],
     updateOnDuplicate: ["id", "homeScore", "awayScore", "matchId", "updatedAt"],
   });
+
+  addScores(resultData);
 };
 
 module.exports = {

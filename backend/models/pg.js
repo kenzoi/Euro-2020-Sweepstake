@@ -87,6 +87,10 @@ const Prediction = sequelize.define("prediction", {
     type: DataTypes.INTEGER,
     allowNull: true,
   },
+  pointsScored: {
+    type: DataTypes.INTEGER,
+    allowNull: true,
+  },
 });
 
 Team.hasMany(Match, { foreignKey: "homeTeamId" });
