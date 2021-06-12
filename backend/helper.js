@@ -34,9 +34,10 @@ const matches = (data) => {
 
 const results = (data) => {
   const arr = [];
-  data.forEach((result) => {
-    // "FT" "AET" "PEN"
-    if (result.status.short === "FT") {
+  data.forEach(
+    (result) => {
+      // TODO: add logic to only update results on "FT" "AET" "PEN" status'
+      // if (result.status.short === "FT") {
       arr.push({
         id: result.fixture.id,
         homeScore: result.goals.home,
@@ -44,7 +45,8 @@ const results = (data) => {
         matchId: result.fixture.id,
       });
     }
-  });
+    // }
+  );
   return arr;
 };
 
