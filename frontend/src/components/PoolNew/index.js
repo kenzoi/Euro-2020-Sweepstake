@@ -1,9 +1,9 @@
 import "./style.css";
 
-function PoolNew({ submitHandler }) {
+function PoolNew({ createPoolHandler }) {
   return (
     <div className="pool-new__container">
-      <button onClick={submitHandler}>Add New Pool</button>
+      <button onClick={createPoolHandler}>Add New Pool</button>
     </div>
   );
 }

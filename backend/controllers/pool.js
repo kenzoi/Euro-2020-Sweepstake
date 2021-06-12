@@ -93,7 +93,32 @@ const joinPool = async (req, res) => {
       where: { nanoId },
     });
     await pool.addUser(user, { through: { owner: false } });
-    res.status(200).json(pool);
+    // TODO: Not so DRY...
+    const pools = await db.user.findOne({
+      where: { id: userId },
+      attributes: [],
+      include: {
+        // TODO: see if there is a better way to include the pool owner
+        model: db.pool,
+        attributes: ["id", "nanoId"],
+        include: {
+          model: db.prediction,
+          required: false,
+          attributes: ["id", "homeScore", "awayScore"],
+          where: { userId },
+          include: {
+            model: db.match,
+            attributes: ["id", "kickoff"],
+            as: "match",
+            include: [
+              { model: db.team, attributes: ["name"], as: "homeTeam" },
+              { model: db.team, attributes: ["name"], as: "awayTeam" },
+            ],
+          },
+        },
+      },
+    });
+    res.status(200).json(pools);
   } catch (e) {
     // eslint-disable-next-line no-console
     console.log(e);
