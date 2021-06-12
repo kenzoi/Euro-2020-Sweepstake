@@ -58,6 +58,7 @@ const addScores = async (data) => {
 
   const rowsToAddPoints = _.flattenDeep(
     predictionsToAddScores.map((prediction) =>
+      // eslint-disable-next-line array-callback-return, consistent-return
       matchesWithScores.map((match) => {
         if (
           match.id === prediction.matchId &&
