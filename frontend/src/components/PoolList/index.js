@@ -7,20 +7,24 @@ function PoolList({ data }) {
 
   const pools = data
     ? data.map((pool) => (
-        <div className="pool-list__item" key={pool.id}>
-          <div>{pool.nanoId}&nbsp;</div>
-          <Link to={`${url}/prediction/${pool.nanoId}`}>Prediction</Link>
-        </div>
+        <Link to={`${url}/prediction/${pool.nanoId}`}>
+          <div className="pool-list__item" key={pool.id}>
+            {pool.nanoId}
+          </div>
+        </Link>
       ))
     : null;
 
   return (
-    <div className="pool-list__container">
-      {pools}
+    <div>
+      <div className="pool-list__container">
+        <div className="pool-list__header">
+          <span>Active Pools</span>
+        </div>
+        {pools}
+      </div>
       <Switch>
-        <Route path={`${path}/prediction/:pool`}>
-          <PredictionList />
-        </Route>
+        <Route path={`${path}/prediction/:pool`} component={PredictionList} />
       </Switch>
     </div>
   );
