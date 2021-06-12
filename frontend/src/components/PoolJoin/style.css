@@ -1,6 +1,8 @@
 .pool-join__container {
   border: 1px solid red;
+  padding: 1rem;
 }
 
 .pool-join__input {
+  margin: 0.25rem;
 }

@@ -38,7 +38,7 @@ function Profile() {
 
   return (
     <div className="profile__container">
-      <div>Profile Page</div>
+      <div className="profile__header">Profile Page</div>
       <PoolJoin
         changeHandler={joinPoolChangeHandler}
         submitHandler={joinPoolSubmitHandler}
