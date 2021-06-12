@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import PredictionItem from "../PredictionItem";
 import {
   getMatches,
@@ -12,10 +13,12 @@ function PredictionList() {
   const [data, setData] = useState({});
   const [hasPrediction, setHasPrediction] = useState(false);
 
+  const { pool } = useParams();
+
   useEffect(() => {
     const ayncInUseEffect = async () => {
-      // TODO: make pools and users dynamic
-      const res = await getPredictions("lud0A2jyGF", 1);
+      // TODO: users dynamic
+      const res = await getPredictions(pool, 1);
       const matchData = !!res.data
         ? withPredictions(res.data.predictions)
         : await withoutPredictions();
@@ -26,7 +29,7 @@ function PredictionList() {
       setData(dataObj);
     };
     ayncInUseEffect();
-  }, []);
+  }, [pool]);
 
   const withPredictions = (data) => {
     setHasPrediction(true);
@@ -51,9 +54,9 @@ function PredictionList() {
   const handleSubmit = async () => {
     const dataArr = Object.values(data);
     if (hasPrediction) {
-      // TODO: make pools and users dynamic
+      // TODO: make users dynamic
       await putPredictions(
-        "lud0A2jyGF",
+        pool,
         1,
         dataArr.map((prediction) => {
           return {
@@ -65,9 +68,9 @@ function PredictionList() {
         })
       );
     } else {
-      // TODO: make pools and users dynamic
+      // TODO: make users dynamic
       await postPredictions(
-        "lud0A2jyGF",
+        pool,
         1,
         dataArr.map((match) => {
           return {

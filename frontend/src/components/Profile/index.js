@@ -24,8 +24,8 @@ function Profile() {
   return (
     <div className="profile__container">
       <div>Profile Page</div>
-      <PoolList data={data} />
       <PoolNew submitHandler={submitHandler} />
+      <PoolList data={data} />
     </div>
   );
 }
