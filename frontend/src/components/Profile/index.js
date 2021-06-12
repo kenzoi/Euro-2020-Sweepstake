@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import PoolJoin from "../PoolJoin";
 import PoolList from "../PoolList";
 import PoolNew from "../PoolNew";
 import { getPools, postPools } from "../../httpClient/axios";
@@ -24,6 +25,7 @@ function Profile() {
   return (
     <div className="profile__container">
       <div>Profile Page</div>
+      <PoolJoin />
       <PoolNew submitHandler={submitHandler} />
       <PoolList data={data} />
     </div>
