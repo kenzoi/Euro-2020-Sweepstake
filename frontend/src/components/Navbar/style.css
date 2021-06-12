@@ -1,8 +1,13 @@
 .navbar__container {
-  border: 1px solid red;
+  background: hsl(0, 0%, 15%);
   padding: 1rem;
 }
 
 .navbar__item {
+  color: hsl(0, 0%, 100%);
   padding: 1rem;
+}
+
+a {
+  text-decoration: none;
 }
