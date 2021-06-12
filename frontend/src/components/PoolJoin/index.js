@@ -3,7 +3,6 @@ import "./style.css";
 function PoolJoin({ submitHandler, changeHandler, value }) {
   return (
     <div className="pool-join__container">
-      <div>Join Pool</div>
       <form id="join" onSubmit={submitHandler}>
         <input
           name="pool"
@@ -13,10 +12,10 @@ function PoolJoin({ submitHandler, changeHandler, value }) {
           onChange={changeHandler}
           value={value}
         ></input>
+        <button type="submit" form="join" value="Submit">
+          Join Pool
+        </button>
       </form>
-      <button type="submit" form="join" value="Submit">
-        Submit
-      </button>
     </div>
   );
 }
