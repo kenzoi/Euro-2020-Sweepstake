@@ -24,11 +24,6 @@ function Profile() {
     setData(res.data.pools);
   };
 
-  const joinPoolChangeHandler = (e) => {
-    const text = e.target.value;
-    setPoolText(text);
-  };
-
   const joinPoolSubmitHandler = async (e) => {
     e.preventDefault();
     const res = await postJoinPool(poolText, userid);
@@ -43,7 +38,7 @@ function Profile() {
       </Typography>
       <Box m={1}>
         <PoolJoin
-          changeHandler={joinPoolChangeHandler}
+          changeHandler={(e) => setPoolText(e.target.value)}
           submitHandler={joinPoolSubmitHandler}
           value={poolText}
         />
