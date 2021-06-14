@@ -10,7 +10,7 @@ function App() {
       <div className="app__container">
         <Navbar />
         <Switch>
-          <Route path="/profile">
+          <Route path="/profile/:userid">
             <Profile />
           </Route>
           <Route path="/">

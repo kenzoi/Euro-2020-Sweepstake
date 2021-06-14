@@ -5,23 +5,22 @@ import { login } from "../../httpClient/axios";
 import "./style.css";
 
 function Home() {
-  const [loggedIn, setLoggedIn] = useState(false);
   const [email, setEmail] = useState("");
+  const [user, setUser] = useState({});
 
   const changeHandler = (e) => {
     setEmail(e.target.value);
   };
 
-  const loginHandler = (e) => {
+  const loginHandler = async (e) => {
     e.preventDefault();
-    // TODO: set a global user state...
-    login(e.target.email.value);
-    setLoggedIn(true);
+    const res = await login(e.target.email.value);
+    setUser(res.data);
     setEmail("");
   };
 
-  const loginOrRedirect = loggedIn ? (
-    <Redirect to="/profile" />
+  const loginOrRedirect = user.id ? (
+    <Redirect to={`/profile/${user.id}`} />
   ) : (
     <div>
       <Typography>Login</Typography>

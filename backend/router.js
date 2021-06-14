@@ -9,7 +9,7 @@ const leaderboardController = require("./controllers/leaderboard");
 
 const router = new Router();
 
-router.post("/login", loginController.login);
+router.post("/login/:email", loginController.login);
 
 router.post("/user", userController.createUser);
 
