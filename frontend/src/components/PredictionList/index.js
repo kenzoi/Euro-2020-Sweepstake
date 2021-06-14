@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Button from "@material-ui/core/Button";
+import { Button, Snackbar } from "@material-ui/core";
 import PredictionItem from "../PredictionItem";
 import {
   getMatches,
@@ -13,6 +13,16 @@ import "./style.css";
 function PredictionList() {
   const [data, setData] = useState({});
   const [hasPrediction, setHasPrediction] = useState(false);
+  const [state, setState] = useState({
+    open: false,
+    vertical: "bottom",
+    horizontal: "center",
+  });
+
+  const { vertical, horizontal, open } = state;
+
+  const handleClick = (newState) => setState({ ...newState, open: true });
+  const handleClose = () => setState({ ...state, open: false });
 
   const { pool } = useParams();
 
@@ -84,6 +94,8 @@ function PredictionList() {
       );
       setHasPrediction(true);
     }
+    window.scrollTo(0, 0);
+    handleClick({ vertical: "bottom", horizontal: "center" });
   };
 
   return (
@@ -103,6 +115,13 @@ function PredictionList() {
           </Button>
         </div>
       ) : null}
+      <Snackbar
+        anchorOrigin={{ vertical, horizontal }}
+        open={open}
+        onClose={handleClose}
+        message="Submission successful"
+        key={vertical + horizontal}
+      />
     </div>
   );
 }
