@@ -16,7 +16,7 @@ const getLeaderboard = async (req, res) => {
           as: "pool",
           where: { nanoId },
         },
-        { model: db.user, attributes: ["email"], as: "user" },
+        { model: db.user, attributes: ["name"], as: "user" },
       ],
     });
     res.status(200).json(leaderboard);

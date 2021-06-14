@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Switch, Route, Link, useRouteMatch } from "react-router-dom";
 import { List, ListItem, ListItemText, Typography } from "@material-ui/core";
+import Leaderboard from "../Leaderboard";
 import PredictionList from "../PredictionList";
 import "./style.css";
 
@@ -33,6 +34,7 @@ function PoolList({ data }) {
         <List className="pool-list__item" component="nav">
           {pools}
         </List>
+        <Leaderboard pool={selected} />
       </div>
       <Switch>
         <Route path={`${path}/prediction/:pool`} component={PredictionList} />
