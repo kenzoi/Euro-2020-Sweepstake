@@ -1,30 +1,15 @@
 import { useState } from "react";
-import { Switch, Route, Link, useRouteMatch } from "react-router-dom";
-import { List, ListItem, ListItemText, Typography } from "@material-ui/core";
+import { Switch, Route, useRouteMatch } from "react-router-dom";
+import { List, Typography } from "@material-ui/core";
 import Leaderboard from "../Leaderboard";
 import PredictionList from "../PredictionList";
 import "./style.css";
+import PoolListItem from "../PoolListItem";
 
 function PoolList({ data }) {
-  const { path, url } = useRouteMatch();
   const [selected, setSelected] = useState();
 
-  const handleListItemClick = (e, id) => setSelected(id);
-
-  const pools = data
-    ? data.map((pool) => (
-        <Link to={`${url}/prediction/${pool.nanoId}`} key={pool.id}>
-          <ListItem
-            button
-            selected={selected === pool.nanoId}
-            onClick={(e) => handleListItemClick(e, pool.nanoId)}
-            key={pool.id}
-          >
-            <ListItemText primary={pool.nanoId} key={pool.id} />
-          </ListItem>
-        </Link>
-      ))
-    : null;
+  const { path } = useRouteMatch();
 
   return (
     <div>
@@ -33,7 +18,11 @@ function PoolList({ data }) {
           Active Pools
         </Typography>
         <List className="pool-list__item" component="nav">
-          {pools}
+          <PoolListItem
+            data={data}
+            selected={selected}
+            setSelected={setSelected}
+          />
         </List>
         <Leaderboard pool={selected} />
       </div>
