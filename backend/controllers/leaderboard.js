@@ -9,6 +9,7 @@ const getLeaderboard = async (req, res) => {
         [sequelize.fn("COUNT", sequelize.col("pointsScored")), "totalPoints"],
       ],
       group: ["user.id", "pool.id"],
+      order: [[sequelize.fn("COUNT", sequelize.col("pointsScored")), "DESC"]],
       include: [
         {
           model: db.pool,
