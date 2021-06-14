@@ -17,11 +17,10 @@ function Leaderboard({ pool }) {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    const ayncInUseEffect = async () => {
+    (async () => {
       const res = await getLeaderboard(pool);
       setData(res.data);
-    };
-    ayncInUseEffect();
+    })();
   }, [pool]);
 
   return (

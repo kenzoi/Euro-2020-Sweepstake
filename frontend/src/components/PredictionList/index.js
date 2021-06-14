@@ -27,7 +27,7 @@ function PredictionList() {
   const { userid, pool } = useParams();
 
   useEffect(() => {
-    const ayncInUseEffect = async () => {
+    (async () => {
       const res = await getPredictions(pool, userid);
       const matchData = !!res.data
         ? withPredictions(res.data.predictions)
@@ -37,8 +37,7 @@ function PredictionList() {
         return (acc[curr.id] = curr), acc;
       }, {});
       setData(dataObj);
-    };
-    ayncInUseEffect();
+    })();
   }, [pool, userid]);
 
   const withPredictions = (data) => {

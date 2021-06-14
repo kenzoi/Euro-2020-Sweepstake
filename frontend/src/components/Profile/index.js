@@ -13,11 +13,10 @@ function Profile() {
   const { userid } = useParams();
 
   useEffect(() => {
-    const ayncInUseEffect = async () => {
+    (async () => {
       const res = await getPools(userid);
       setData(res.data.pools);
-    };
-    ayncInUseEffect();
+    })();
   }, [userid]);
 
   const createPoolHandler = async () => {
