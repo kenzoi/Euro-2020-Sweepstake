@@ -25,7 +25,6 @@ function PredictionList() {
   const handleClose = () => setState({ ...state, open: false });
 
   const { userid, pool } = useParams();
-  console.log("userid", userid);
 
   useEffect(() => {
     const ayncInUseEffect = async () => {
