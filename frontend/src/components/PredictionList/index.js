@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Button from "@material-ui/core/Button";
 import PredictionItem from "../PredictionItem";
 import {
   getMatches,
@@ -98,7 +99,9 @@ function PredictionList() {
               setData={setData}
             />
           ))}
-          <button onClick={handleSubmit}>Submit</button>
+          <Button onClick={handleSubmit} variant="contained" color="primary">
+            Submit
+          </Button>
         </div>
       ) : null}
     </div>

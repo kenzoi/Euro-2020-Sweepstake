@@ -1,23 +1,34 @@
+import { Button, Box, TextField } from "@material-ui/core";
 import "./style.css";
 
 function PoolJoin({ submitHandler, changeHandler, value }) {
   return (
-    <div className="pool-join__container">
-      <form id="join" onSubmit={submitHandler}>
-        <input
-          name="pool"
-          className="pool-join__input"
-          type="text"
-          placeholder="Enter pool code here..."
-          onChange={changeHandler}
-          value={value}
-        ></input>
-        <button type="submit" form="join" value="Submit">
-          Join Pool
-        </button>
+    <Box m={2}>
+      <form id="join" noValidate autoComplete="off" onSubmit={submitHandler}>
+        <div className="pool-join__fields">
+          <TextField
+            id="poolId"
+            label="Invite code"
+            variant="outlined"
+            type="text"
+            size="small"
+            value={value}
+            onChange={changeHandler}
+          />
+        </div>
+        <div className="pool-join__fields">
+          <Button
+            type="submit"
+            form="join"
+            value="Submit"
+            variant="contained"
+            color="primary"
+          >
+            Join Pool
+          </Button>
+        </div>
       </form>
-    </div>
+    </Box>
   );
 }
-
 export default PoolJoin;

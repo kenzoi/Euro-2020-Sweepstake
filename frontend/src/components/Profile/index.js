@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { Box, Button } from "@material-ui/core";
 import PoolJoin from "../PoolJoin";
 import PoolList from "../PoolList";
-import PoolNew from "../PoolNew";
 import { getPools, postCreatePool, postJoinPool } from "../../httpClient/axios";
 import "./style.css";
 
@@ -44,7 +44,11 @@ function Profile() {
         submitHandler={joinPoolSubmitHandler}
         value={poolText}
       />
-      <PoolNew createPoolHandler={createPoolHandler} />
+      <Box m={1}>
+        <Button variant="outlined" color="primary" onClick={createPoolHandler}>
+          Add New Pool
+        </Button>
+      </Box>
       <PoolList data={data} />
     </div>
   );
