@@ -41,3 +41,8 @@ export const postJoinPool = (poolId, userId) => {
 export const getLeaderboard = (nanoId) => {
   return axios.get(`${base_url}/leaderboard/${nanoId}`);
 };
+
+export const login = (user) => {
+  // console.log("logging in user:", user);
+  return axios.post(`${base_url}/login`);
+};
