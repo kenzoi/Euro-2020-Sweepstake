@@ -1,3 +1,4 @@
+import { TextField } from "@material-ui/core";
 import moment from "moment";
 import "./style.css";
 
@@ -22,26 +23,28 @@ function PredictionItem({ id, data, setData }) {
           <span>{data[id].homeTeam.name}</span>
         </div>
         <div className="prediction-item__box">
-          <input
+          <TextField
+            id="homeScore-number"
             name="homeScore"
-            className="prediction-item__input"
+            label="Home"
+            size="small"
             type="number"
-            min="0"
-            max="99"
-            size="2"
+            style={{ width: 75 }}
+            variant="outlined"
             value={data[id].homeScore}
             onChange={handleUpdate}
-          ></input>
-          <input
+          />
+          <TextField
+            id="awayScore-number"
             name="awayScore"
-            className="prediction-item__input"
+            label="Away"
+            size="small"
             type="number"
-            min="0"
-            max="99"
-            size="2"
+            style={{ width: 75 }}
+            variant="outlined"
             value={data[id].awayScore}
             onChange={handleUpdate}
-          ></input>
+          />
         </div>
         <div className="prediction-item__box">
           <span>{data[id].awayTeam.name}</span>
