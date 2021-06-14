@@ -1,4 +1,4 @@
-import { TextField } from "@material-ui/core";
+import { TextField, Typography } from "@material-ui/core";
 import moment from "moment";
 import "./style.css";
 
@@ -15,13 +15,13 @@ function PredictionItem({ id, data, setData }) {
 
   return (
     <div className="prediction-item__container">
-      <div className="prediction-item__date">
+      <Typography className="prediction-item__date" variant="subtitle1">
         {moment(data[id].kickoff).format("LLLL")}
-      </div>
+      </Typography>
       <div className="prediction-item__box-container">
-        <div className="prediction-item__box">
+        <Typography className="prediction-item__box" variant="body1">
           <span>{data[id].homeTeam.name}</span>
-        </div>
+        </Typography>
         <div className="prediction-item__box">
           <TextField
             id="homeScore-number"
@@ -46,9 +46,9 @@ function PredictionItem({ id, data, setData }) {
             onChange={handleUpdate}
           />
         </div>
-        <div className="prediction-item__box">
+        <Typography className="prediction-item__box" variant="body1">
           <span>{data[id].awayTeam.name}</span>
-        </div>
+        </Typography>
       </div>
     </div>
   );
