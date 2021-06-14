@@ -15,7 +15,6 @@ function Home() {
   const loginHandler = async (e) => {
     e.preventDefault();
     const res = await login(e.target.email.value);
-    console.log(res);
     if (res.data !== "") setUser(res.data);
     else setEmail("");
   };
@@ -24,7 +23,7 @@ function Home() {
     <Redirect to={`/profile/${user.id}`} />
   ) : (
     <div>
-      <Typography>Login</Typography>
+      <Typography variant="h5">Login</Typography>
       <form id="login" noValidate autoComplete="off" onSubmit={loginHandler}>
         <TextField
           name="email"
