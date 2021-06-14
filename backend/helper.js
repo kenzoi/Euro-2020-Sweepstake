@@ -107,8 +107,33 @@ const dbUpsert = async (data) => {
   addScores(resultData);
 };
 
+const poolQuery = (userId) => ({
+  where: { id: userId },
+  attributes: [],
+  include: {
+    model: db.pool,
+    attributes: ["id", "nanoId"],
+    include: {
+      model: db.prediction,
+      required: false,
+      attributes: ["id", "homeScore", "awayScore"],
+      where: { userId },
+      include: {
+        model: db.match,
+        attributes: ["id", "kickoff"],
+        as: "match",
+        include: [
+          { model: db.team, attributes: ["name"], as: "homeTeam" },
+          { model: db.team, attributes: ["name"], as: "awayTeam" },
+        ],
+      },
+    },
+  },
+});
+
 module.exports = {
   matches,
   teams,
   dbUpsert,
+  poolQuery,
 };
