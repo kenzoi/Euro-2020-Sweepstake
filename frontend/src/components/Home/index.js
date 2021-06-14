@@ -15,8 +15,9 @@ function Home() {
   const loginHandler = async (e) => {
     e.preventDefault();
     const res = await login(e.target.email.value);
-    setUser(res.data);
-    setEmail("");
+    console.log(res);
+    if (res.data !== "") setUser(res.data);
+    else setEmail("");
   };
 
   const loginOrRedirect = user.id ? (
