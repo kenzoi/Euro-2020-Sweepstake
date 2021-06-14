@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Box, Button } from "@material-ui/core";
+import { Box, Button, Typography } from "@material-ui/core";
 import PoolJoin from "../PoolJoin";
 import PoolList from "../PoolList";
 import { getPools, postCreatePool, postJoinPool } from "../../httpClient/axios";
@@ -37,8 +37,10 @@ function Profile() {
   };
 
   return (
-    <div className="profile__container">
-      <div className="profile__header">Profile Page</div>
+    <div>
+      <Typography className="profile__header" variant="h4">
+        Profile Page
+      </Typography>
       <PoolJoin
         changeHandler={joinPoolChangeHandler}
         submitHandler={joinPoolSubmitHandler}

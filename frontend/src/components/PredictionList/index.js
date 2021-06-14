@@ -90,7 +90,6 @@ function PredictionList() {
     <div className="prediction-list__container">
       {data ? (
         <div>
-          <div>POOL: {pool}</div>
           {Object.keys(data).map((matchId) => (
             <PredictionItem
               key={data[matchId].id}
