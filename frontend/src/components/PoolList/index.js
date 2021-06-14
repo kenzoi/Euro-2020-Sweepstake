@@ -13,11 +13,12 @@ function PoolList({ data }) {
 
   const pools = data
     ? data.map((pool) => (
-        <Link to={`${url}/prediction/${pool.nanoId}`}>
+        <Link to={`${url}/prediction/${pool.nanoId}`} key={pool.id}>
           <ListItem
             button
             selected={selected === pool.nanoId}
             onClick={(e) => handleListItemClick(e, pool.nanoId)}
+            key={pool.id}
           >
             <ListItemText primary={pool.nanoId} key={pool.id} />
           </ListItem>
