@@ -3,19 +3,22 @@ const db = require("../models/pg");
 
 const getLeaderboard = async (req, res) => {
   try {
-    const nanoId = "ggcEmNkGo-";
+    const { nanoId } = req.params;
     const leaderboard = await db.prediction.findAll({
       attributes: [
-        "poolId",
-        "userId",
         [sequelize.fn("COUNT", sequelize.col("pointsScored")), "totalPoints"],
       ],
-      group: ["poolId", "userId"],
+      group: ["user.id", "pool.id"],
       include: [
-        { model: db.pool, attributes: [], as: "pool", where: { nanoId } },
+        {
+          model: db.pool,
+          attributes: ["nanoId"],
+          as: "pool",
+          where: { nanoId },
+        },
+        { model: db.user, attributes: ["email"], as: "user" },
       ],
     });
-
     res.status(200).json(leaderboard);
   } catch (e) {
     // eslint-disable-next-line no-console

@@ -34,6 +34,6 @@ router.get(
   predictionController.getPredictions
 );
 
-router.get("/leaderboard", leaderboardController.getLeaderboard);
+router.get("/leaderboard/:nanoId", leaderboardController.getLeaderboard);
 
 module.exports = router;
