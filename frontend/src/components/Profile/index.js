@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { Box, Button, Typography } from "@material-ui/core";
 import PoolJoin from "../PoolJoin";
 import PoolList from "../PoolList";
@@ -9,18 +10,18 @@ function Profile() {
   const [data, setData] = useState();
   const [poolText, setPoolText] = useState();
 
+  const { userid } = useParams();
+
   useEffect(() => {
     const ayncInUseEffect = async () => {
-      // TODO: dynamically pass the user
-      const res = await getPools(1);
+      const res = await getPools(userid);
       setData(res.data.pools);
     };
     ayncInUseEffect();
-  }, []);
+  }, [userid]);
 
   const createPoolHandler = async () => {
-    // TODO: dynamically pass the user
-    const res = await postCreatePool(1);
+    const res = await postCreatePool(userid);
     setData(res.data.pools);
   };
 
@@ -31,7 +32,7 @@ function Profile() {
 
   const joinPoolSubmitHandler = async (e) => {
     e.preventDefault();
-    const res = await postJoinPool(poolText, 1);
+    const res = await postJoinPool(poolText, userid);
     setPoolText("");
     setData(res.data.pools);
   };

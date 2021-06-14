@@ -7,9 +7,10 @@ function Navbar() {
       <Link className="navbar__item" to="/">
         Home
       </Link>
+      {/* TODO: investigate other ways to connect after dynamic user ids
       <Link className="navbar__item" to="/profile">
-        Profile
-      </Link>
+      Profile
+      </Link> */}
     </nav>
   );
 }

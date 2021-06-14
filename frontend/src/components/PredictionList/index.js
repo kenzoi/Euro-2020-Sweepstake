@@ -24,12 +24,12 @@ function PredictionList() {
   const handleClick = (newState) => setState({ ...newState, open: true });
   const handleClose = () => setState({ ...state, open: false });
 
-  const { pool } = useParams();
+  const { userid, pool } = useParams();
+  console.log("userid", userid);
 
   useEffect(() => {
     const ayncInUseEffect = async () => {
-      // TODO: users dynamic
-      const res = await getPredictions(pool, 1);
+      const res = await getPredictions(pool, userid);
       const matchData = !!res.data
         ? withPredictions(res.data.predictions)
         : await withoutPredictions();
@@ -40,7 +40,7 @@ function PredictionList() {
       setData(dataObj);
     };
     ayncInUseEffect();
-  }, [pool]);
+  }, [pool, userid]);
 
   const withPredictions = (data) => {
     setHasPrediction(true);
@@ -66,10 +66,9 @@ function PredictionList() {
   const handleSubmit = async () => {
     const dataArr = Object.values(data);
     if (hasPrediction) {
-      // TODO: make users dynamic
       await putPredictions(
         pool,
-        1,
+        userid,
         dataArr.map((prediction) => {
           return {
             id: prediction.id,
@@ -80,10 +79,9 @@ function PredictionList() {
         })
       );
     } else {
-      // TODO: make users dynamic
       await postPredictions(
         pool,
-        1,
+        userid,
         dataArr.map((match) => {
           return {
             matchId: match.id,
