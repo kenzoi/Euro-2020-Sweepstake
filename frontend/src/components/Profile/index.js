@@ -37,17 +37,23 @@ function Profile() {
   };
 
   return (
-    <div>
+    <div className="profile__container">
       <Typography className="profile__header" variant="h4">
         Profile Page
       </Typography>
-      <PoolJoin
-        changeHandler={joinPoolChangeHandler}
-        submitHandler={joinPoolSubmitHandler}
-        value={poolText}
-      />
       <Box m={1}>
-        <Button variant="outlined" color="primary" onClick={createPoolHandler}>
+        <PoolJoin
+          changeHandler={joinPoolChangeHandler}
+          submitHandler={joinPoolSubmitHandler}
+          value={poolText}
+        />
+      </Box>
+      <Box m={1}>
+        <Button
+          variant="outlined"
+          color="secondary"
+          onClick={createPoolHandler}
+        >
           Add New Pool
         </Button>
       </Box>

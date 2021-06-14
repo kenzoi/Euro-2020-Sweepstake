@@ -14,6 +14,7 @@ function PoolJoin({ submitHandler, changeHandler, value }) {
             size="small"
             value={value}
             onChange={changeHandler}
+            className="pool-join__textfield"
           />
         </div>
         <div className="pool-join__fields">

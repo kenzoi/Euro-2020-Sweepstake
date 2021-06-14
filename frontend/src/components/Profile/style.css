@@ -1,4 +1,9 @@
+.profile__container {
+  background: hsl(0, 0%, 95%);
+}
+
 .profile__header {
-  padding: 1rem;
+  background: hsl(0, 0%, 100%);
   box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%);
+  padding: 1rem;
 }

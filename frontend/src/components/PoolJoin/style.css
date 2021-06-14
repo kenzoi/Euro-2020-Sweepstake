@@ -1,7 +1,12 @@
 .pool-join__container {
+  background: hsl(0, 0%, 95%);
   padding: 0.5rem;
 }
 
 .pool-join__fields {
   margin: 0.25rem;
+}
+
+.pool-join__textfield {
+  background: hsl(0, 0%, 100%);
 }

@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { Switch, Route, Link, useRouteMatch } from "react-router-dom";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
+import { List, ListItem, ListItemText, Typography } from "@material-ui/core";
 import PredictionList from "../PredictionList";
 import "./style.css";
 
@@ -29,7 +27,9 @@ function PoolList({ data }) {
   return (
     <div>
       <div className="pool-list__container">
-        <div className="pool-list__header">Active Pools</div>
+        <Typography className="pool-list__header" variant="h5">
+          Active Pools
+        </Typography>
         <List className="pool-list__item" component="nav">
           {pools}
         </List>
