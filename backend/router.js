@@ -5,6 +5,7 @@ const matchController = require("./controllers/match");
 const resultController = require("./controllers/result");
 const loginController = require("./controllers/login");
 const predictionController = require("./controllers/prediction");
+const leaderboardController = require("./controllers/leaderboard");
 
 const router = new Router();
 
@@ -32,5 +33,7 @@ router.get(
   "/prediction/:poolId/user/:userId",
   predictionController.getPredictions
 );
+
+router.get("/leaderboard", leaderboardController.getLeaderboard);
 
 module.exports = router;
