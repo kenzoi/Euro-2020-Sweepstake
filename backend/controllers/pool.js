@@ -45,9 +45,13 @@ const joinPool = async (req, res) => {
     const pool = await db.pool.findOne({
       where: { nanoId },
     });
-    await pool.addUser(user, { through: { owner: false } });
-    const pools = await db.user.findOne(poolQuery(userId));
-    res.status(200).json(pools);
+    if (pool) {
+      await pool.addUser(user, { through: { owner: false } });
+      const pools = await db.user.findOne(poolQuery(userId));
+      res.status(200).json(pools);
+    } else {
+      res.status(400).json({ message: "Pool does not exist" });
+    }
   } catch (e) {
     // eslint-disable-next-line no-console
     console.log(e);
