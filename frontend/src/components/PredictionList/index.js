@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Button, Snackbar, Typography } from "@material-ui/core";
+import { Box, Button, Snackbar, Typography } from "@material-ui/core";
+import Leaderboard from "../Leaderboard";
 import PredictionItem from "../PredictionItem";
 import {
   getMatches,
@@ -98,6 +99,9 @@ function PredictionList() {
     <div className="prediction-list__container">
       {data ? (
         <div>
+          <Box m={1} mt={2}>
+            <Leaderboard pool={pool} />
+          </Box>
           <Typography variant="h5">Predictions</Typography>
           {Object.keys(data).map((matchId) => (
             <PredictionItem

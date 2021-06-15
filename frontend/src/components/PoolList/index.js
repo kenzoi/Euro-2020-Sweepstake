@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Switch, Route, useRouteMatch } from "react-router-dom";
-import { Box, List, Typography } from "@material-ui/core";
-import Leaderboard from "../Leaderboard";
+import { List, Typography } from "@material-ui/core";
 import PredictionList from "../PredictionList";
 import "./style.css";
 import PoolListItem from "../PoolListItem";
@@ -23,9 +22,6 @@ function PoolList({ data }) {
           />
         </List>
       </div>
-      <Box m={1} mt={2}>
-        <Leaderboard pool={selected} />
-      </Box>
       <Switch>
         <Route path={`${path}/prediction/:pool`} component={PredictionList} />
       </Switch>
