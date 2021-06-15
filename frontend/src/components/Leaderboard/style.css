@@ -1,0 +1,7 @@
+.leaderboard__tablehead {
+  background: hsl(191, 100%, 32%);
+}
+
+.leaderboard__tableheadtext {
+  color: hsl(0, 0%, 100%);
+}

@@ -30,10 +30,17 @@ function Leaderboard({ pool }) {
           <Typography variant="h5">Leaderboard</Typography>
           <TableContainer component={Paper}>
             <Table>
-              <TableHead>
+              <TableHead className="leaderboard__tablehead">
                 <TableRow>
-                  <TableCell>Name</TableCell>
-                  <TableCell align="right">Score</TableCell>
+                  <TableCell className="leaderboard__tableheadtext">
+                    Name
+                  </TableCell>
+                  <TableCell
+                    className="leaderboard__tableheadtext"
+                    align="right"
+                  >
+                    Score
+                  </TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
