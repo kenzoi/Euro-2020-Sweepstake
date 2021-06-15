@@ -26,9 +26,11 @@
 }
 
 .prediction-item__box:first-child > span {
-  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
 }
 
 .prediction-item__box:last-child > span {
-  margin-right: auto;
+  margin-left: auto;
+  text-align: right;
 }
