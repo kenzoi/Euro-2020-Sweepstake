@@ -16,10 +16,8 @@ const options = {
 };
 
 const getFixtures = async () => {
-  const response = await axios.request(options);
-  // eslint-disable-next-line no-console
-  console.log("API CALL!!!");
-  return response.data;
+  const { data } = await axios.request(options);
+  return data;
 };
 
 module.exports = {
