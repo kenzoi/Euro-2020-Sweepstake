@@ -51,10 +51,10 @@ function Home() {
           </Button>
         </Box>
       </Box>
-      <Box m={1} mt={5}>
+      <Box>
         <img
           src="https://upload.wikimedia.org/wikipedia/en/9/96/UEFA_Euro_2020_Logo.svg"
-          width="50%"
+          width="85%"
           alt="EUFA Euro 2020 Logo"
         />
         <div>
