@@ -23,7 +23,7 @@ function PoolList({ data }) {
           />
         </List>
       </div>
-      <Box m={1}>
+      <Box m={1} mt={2}>
         <Leaderboard pool={selected} />
       </Box>
       <Switch>
