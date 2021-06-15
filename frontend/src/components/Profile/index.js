@@ -47,8 +47,9 @@ function Profile() {
           value={poolText}
         />
       </Box>
-      <Box m={1}>
+      <Box m={1} mb={2}>
         <Button
+          className="profile_addpool"
           variant="outlined"
           color="secondary"
           onClick={createPoolHandler}
