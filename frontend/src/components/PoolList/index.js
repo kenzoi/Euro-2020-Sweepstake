@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Switch, Route, useRouteMatch } from "react-router-dom";
-import { List, Typography } from "@material-ui/core";
+import { Box, List, Typography } from "@material-ui/core";
 import Leaderboard from "../Leaderboard";
 import PredictionList from "../PredictionList";
 import "./style.css";
@@ -12,11 +12,9 @@ function PoolList({ data }) {
   const { path } = useRouteMatch();
 
   return (
-    <div>
-      <div className="pool-list__container">
-        <Typography className="pool-list__header" variant="h5">
-          Active Pools
-        </Typography>
+    <div className="pool-list__container">
+      <div className="pool-list__header">
+        <Typography variant="h5">Active Pools</Typography>
         <List className="pool-list__item" component="nav">
           <PoolListItem
             data={data}
@@ -24,8 +22,10 @@ function PoolList({ data }) {
             setSelected={setSelected}
           />
         </List>
-        <Leaderboard pool={selected} />
       </div>
+      <Box m={1}>
+        <Leaderboard pool={selected} />
+      </Box>
       <Switch>
         <Route path={`${path}/prediction/:pool`} component={PredictionList} />
       </Switch>
