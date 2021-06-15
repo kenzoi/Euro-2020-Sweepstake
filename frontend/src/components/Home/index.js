@@ -29,7 +29,6 @@ function Home() {
         </Typography>
       </Box>
       <Box m={5}>
-        <Typography variant="h5">Login</Typography>
         <form id="login" noValidate autoComplete="off" onSubmit={loginHandler}>
           <TextField
             className="home__emailfield"
