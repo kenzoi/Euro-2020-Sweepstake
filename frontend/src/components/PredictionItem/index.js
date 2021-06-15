@@ -13,6 +13,8 @@ function PredictionItem({ id, data, setData }) {
     });
   };
 
+  const afterKickoff = moment() > moment(data[id].kickoff);
+
   return (
     <div className="prediction-item__container">
       <Typography className="prediction-item__date" variant="subtitle1">
@@ -24,6 +26,7 @@ function PredictionItem({ id, data, setData }) {
         </Typography>
         <div className="prediction-item__box">
           <TextField
+            disabled={afterKickoff}
             id="homeScore-number"
             name="homeScore"
             label="Home"
@@ -35,6 +38,7 @@ function PredictionItem({ id, data, setData }) {
             onChange={handleUpdate}
           />
           <TextField
+            disabled={afterKickoff}
             id="awayScore-number"
             name="awayScore"
             label="Away"
