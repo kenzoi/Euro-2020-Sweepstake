@@ -1,3 +1,7 @@
 .home__container {
   padding: 1rem;
 }
+
+.home__emailfield {
+  background: hsl(0, 0%, 100%);
+}
