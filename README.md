@@ -41,14 +41,15 @@ List of features ready:
 
 - Basic login (email address only, no auth)
 - Create new or join existing sweepstake pools using unique
-- Make predictions per pool on the group stages of the tournement
+- Make predictions per pool on the group stages of the tournament
 - Predictions cannot be updated once each match kickoff has passed
 - Leaderboard to keep track of current pool standings
 
 Future suggested improvements:
 
-- Login using a auth provider such as Auth0
-- Add knockout stages to the pools
+- Login using an auth provider such as Auth0
+- Add names to pools in to make them more identifiable by users
+- Add knockout stages to the pool predictions
 - Customisable point scoring by owner of each pool
 - Improved cross device UI
 
