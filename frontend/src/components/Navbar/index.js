@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
-// import { Typography } from "@material-ui/core";
 import HomeIcon from "@material-ui/icons/Home";
 import "./style.css";
-// import Home from "../Home";
 
 function Navbar() {
   return (

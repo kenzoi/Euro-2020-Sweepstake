@@ -3,18 +3,9 @@
 }
 
 .pool-list__header {
-  /* color: hsl(0, 0%, 0%); */
-  /* font-weight: bolder; */
-  /* display: flex; */
-  /* justify-content: center; */
-
   background: hsl(0, 0%, 100%);
   box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%);
   padding: 1rem;
-  /* box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%); */
-  /* border-radius: 0.5rem; */
-  /* margin: 0.5rem; */
-  /* padding: 0.75rem; */
 }
 
 .pool-list__item {

@@ -20,7 +20,7 @@ function Home() {
   };
 
   const loginOrRedirect = user.id ? (
-    <Redirect to={`/profile/${user.id}`} />
+    <Redirect to={`/user/${user.id}`} />
   ) : (
     <div className="home__container">
       <Box m={1}>
