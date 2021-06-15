@@ -26,15 +26,19 @@ function Profile() {
 
   const joinPoolSubmitHandler = async (e) => {
     e.preventDefault();
-    const res = await postJoinPool(poolText, userid);
+    try {
+      const res = await postJoinPool(poolText, userid);
+      setData(res.data.pools);
+    } catch (e) {
+      console.log(e);
+    }
     setPoolText("");
-    setData(res.data.pools);
   };
 
   return (
     <div className="profile__container">
-      <Typography className="profile__header" variant="h4">
-        Profile Page
+      <Typography className="profile__header" variant="h5">
+        Join / Create Pool
       </Typography>
       <Box m={1}>
         <PoolJoin

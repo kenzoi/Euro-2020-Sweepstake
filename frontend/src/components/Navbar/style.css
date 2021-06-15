@@ -4,6 +4,7 @@
   z-index: 10;
   background: hsl(191, 100%, 32%);
   padding: 1rem;
+  text-align: left;
 }
 
 .navbar__item {

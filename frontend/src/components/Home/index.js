@@ -23,7 +23,12 @@ function Home() {
     <Redirect to={`/profile/${user.id}`} />
   ) : (
     <div className="home__container">
-      <div>
+      <Box m={1}>
+        <Typography className="home__title" variant="h4">
+          Euro2020 Sweepstake
+        </Typography>
+      </Box>
+      <Box m={5}>
         <Typography variant="h5">Login</Typography>
         <form id="login" noValidate autoComplete="off" onSubmit={loginHandler}>
           <TextField
@@ -46,7 +51,7 @@ function Home() {
             Login
           </Button>
         </Box>
-      </div>
+      </Box>
       <Box m={1} mt={5}>
         <img
           src="https://upload.wikimedia.org/wikipedia/en/9/96/UEFA_Euro_2020_Logo.svg"

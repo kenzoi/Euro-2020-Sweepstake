@@ -25,7 +25,7 @@ function PoolJoin({ submitHandler, changeHandler, value }) {
             variant="contained"
             color="primary"
           >
-            Join Pool
+            Join Existing Pool
           </Button>
         </div>
       </form>
