@@ -95,20 +95,20 @@ const Prediction = sequelize.define("prediction", {
 
 Team.hasMany(Match, { foreignKey: "homeTeamId" });
 Team.hasMany(Match, { foreignKey: "awayTeamId" });
-Match.belongsTo(Team, { as: "homeTeam" });
-Match.belongsTo(Team, { as: "awayTeam" });
+Match.belongsTo(Team, { as: "homeTeam", foreignKey: { allowNull: false } });
+Match.belongsTo(Team, { as: "awayTeam", foreignKey: { allowNull: false } });
 
 Match.hasOne(Result);
-Result.belongsTo(Match, { as: "match" });
+Result.belongsTo(Match, { as: "match", foreignKey: { allowNull: false } });
 
 Match.hasMany(Prediction);
-Prediction.belongsTo(Match, { as: "match" });
+Prediction.belongsTo(Match, { as: "match", foreignKey: { allowNull: false } });
 
 User.hasMany(Prediction);
-Prediction.belongsTo(User, { as: "user" });
+Prediction.belongsTo(User, { as: "user", foreignKey: { allowNull: false } });
 
 Pool.hasMany(Prediction);
-Prediction.belongsTo(Pool, { as: "pool" });
+Prediction.belongsTo(Pool, { as: "pool", foreignKey: { allowNull: false } });
 
 User.belongsToMany(Pool, { through: User_Pool });
 Pool.belongsToMany(User, { through: User_Pool });
