@@ -16,7 +16,6 @@ function Home() {
     try {
       e.preventDefault();
       const res = await login(email);
-      console.log(res);
       if (res.data !== "") setUser(res.data);
       else setEmail("");
     } catch (err) {
