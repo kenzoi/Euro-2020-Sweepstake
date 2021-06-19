@@ -13,10 +13,15 @@ function Home() {
   };
 
   const loginHandler = async (e) => {
-    e.preventDefault();
-    const res = await login(e.target.email.value);
-    if (res.data !== "") setUser(res.data);
-    else setEmail("");
+    try {
+      e.preventDefault();
+      const res = await login(email);
+      console.log(res);
+      if (res.data !== "") setUser(res.data);
+      else setEmail("");
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const loginOrRedirect = user.id ? (
@@ -29,14 +34,16 @@ function Home() {
         </Typography>
       </Box>
       <Box m={5}>
-        <form id="login" noValidate autoComplete="off" onSubmit={loginHandler}>
+        <form id="login" noValidate onSubmit={loginHandler}>
           <TextField
             className="home__emailfield"
             name="email"
-            label="Email"
+            label="email"
+            id="email"
             variant="outlined"
             onChange={changeHandler}
             value={email}
+            placeholder="example@mail.com"
           />
         </form>
         <Box m={1}>
