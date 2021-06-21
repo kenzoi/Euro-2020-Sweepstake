@@ -6,19 +6,30 @@ import { login } from "../../httpClient/axios";
 
 jest.mock("../../httpClient/axios");
 
-test("tests if submit has been clicked once", async () => {
-  login.mockResolvedValue({ data: "foo" });
 
-  const fakeUser = "testuser";
-  render(<Home />);
+describe("Home React Component", () => {
+  test("tests if submit has been clicked once", async () => {
+    login.mockResolvedValue({ data: "foo" });
 
-  const emailNode = screen.getByRole("textbox", { name: "email" });
-  const button = screen.getByRole("button", { name: "Login" });
-  userEvent.type(emailNode, fakeUser);
+    render(<Home />);
 
-  await waitFor(() => userEvent.click(button));
+    const button = screen.getByRole("button", { name: "Login" });
+    await waitFor(() => userEvent.click(button));
 
-  expect(login).toHaveBeenCalledTimes(1);
+    expect(login).toHaveBeenCalledTimes(1);
+  });
 
+  test("tests if submit has been called with the correct value", async () => {
+    login.mockResolvedValue({ data: "foo" });
+    const fakeUser = "testuser";
+
+    render(<Home />);
+    const emailNode = screen.getByRole("textbox", { name: "email" });
+    const button = screen.getByRole("button", { name: "Login" });
+    userEvent.type(emailNode, fakeUser);
+    await waitFor(() => userEvent.click(button));
+
+    expect(login).toHaveBeenCalledWith(fakeUser);
+  });
 
 });

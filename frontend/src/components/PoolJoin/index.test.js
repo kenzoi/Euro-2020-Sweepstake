@@ -3,26 +3,25 @@ import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import PoolJoin from "./index";
 
-test("tests if 'Join Existing Pool' has been clicked once", async () => {
-  const submitHandler = jest.fn((e) => e.preventDefault());
+describe("PoolJoin React Component", () => {
+  test("tests if 'Join Existing Pool' has been clicked once", async () => {
+    const submitHandler = jest.fn((e) => e.preventDefault());
 
-  render(<PoolJoin submitHandler={submitHandler} />);
+    render(<PoolJoin submitHandler={submitHandler} />);
+    const button = screen.getByRole("button", { name: "Join Existing Pool" });
+    await waitFor(() => userEvent.click(button));
 
-  const button = screen.getByRole("button", { name: "Join Existing Pool" });
+    expect(submitHandler).toHaveBeenCalledTimes(1);
+  });
 
-  await waitFor(() => userEvent.click(button));
+  test("tests if changeHandler is being called", () => {
+    const fakeInput = "Kenzo";
+    const changeHandler = jest.fn();
 
-  expect(submitHandler).toHaveBeenCalledTimes(1);
-});
+    render(<PoolJoin changeHandler={changeHandler} />);
+    const joinNode = screen.getByRole("textbox", { name: "Invite code" });
+    userEvent.type(joinNode, fakeInput);
 
-test("tests if changeHandler is being called", () => {
-  const fakeInput = "Kenzo";
-  const changeHandler = jest.fn();
-  render(<PoolJoin changeHandler={changeHandler} />);
-
-  const joinNode = screen.getByRole("textbox", { name: "Invite code" });
-  userEvent.type(joinNode, fakeInput);
-
-  expect(changeHandler).toHaveBeenCalledTimes(5);
-
+    expect(changeHandler).toHaveBeenCalledTimes(5);
+  });
 });
