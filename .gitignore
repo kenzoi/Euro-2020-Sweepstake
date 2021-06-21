@@ -145,3 +145,4 @@ temp/
 
 # Ignore all .env files
 *.env
+*.env.*
