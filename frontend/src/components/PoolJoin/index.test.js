@@ -24,4 +24,5 @@ test("tests if changeHandler is being called", () => {
   userEvent.type(joinNode, fakeInput);
 
   expect(changeHandler).toHaveBeenCalledTimes(5);
+
 });

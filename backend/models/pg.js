@@ -1,5 +1,10 @@
 const { Sequelize, DataTypes } = require("sequelize");
-require("dotenv").config();
+
+const environment =
+  process.env.NODE_ENV === "production"
+    ? ".env.production"
+    : ".env.development";
+require("dotenv").config({ path: environment });
 
 const db = {};
 
@@ -9,6 +14,7 @@ const sequelize = new Sequelize(
   process.env.POSTGRES_PASSWORD,
   {
     host: "localhost",
+    port: process.env.POSTGRES_PORT,
     dialect: "postgres",
     logging: false,
     pool: {

@@ -19,4 +19,5 @@ test("tests if submit has been clicked once", async () => {
   await waitFor(() => userEvent.click(button));
 
   expect(login).toHaveBeenCalledTimes(1);
+
 });

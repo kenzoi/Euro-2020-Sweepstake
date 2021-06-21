@@ -4,7 +4,11 @@ const morgan = require("morgan");
 const router = require("./router");
 const db = require("./models/pg");
 
-require("dotenv").config();
+const environment =
+  process.env.NODE_ENV === "production"
+    ? ".env.production"
+    : ".env.development";
+require("dotenv").config({ path: environment });
 
 const app = express();
 
