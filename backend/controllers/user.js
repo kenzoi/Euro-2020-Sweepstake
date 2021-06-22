@@ -18,6 +18,25 @@ const createUser = async (req, res) => {
   }
 };
 
+const deleteUser = async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const user = await db.user.findOne({
+      where: { id: userId },
+    });
+    if (!user) res.status(400).end();
+    else {
+      await user.destroy();
+      res.status(204).end();
+    }
+  } catch (err) {
+    const { code } = err.parent;
+    if (code === "22003" || code === "22P02") res.status(400).end();
+    else res.status(500).end();
+  }
+};
+
 module.exports = {
   createUser,
+  deleteUser,
 };

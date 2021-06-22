@@ -3,10 +3,10 @@
 const request = require("supertest");
 const app = require("../app");
 
-const testUser = {
+const mockUser = {
   name: "testUser",
   email: "testUser@testUser.com",
-  id: 4,
+  id: "",
 };
 
 describe("/user (POST)", () => {
@@ -21,9 +21,9 @@ describe("/user (POST)", () => {
       .send({ name: "test", email: "test@test.com" });
     expect(response.statusCode).toBe(201);
     expect(response.body).toHaveProperty("id");
+    mockUser.id = response.body.id;
   });
 });
-
 
 describe("/login/:email (POST)", () => {
   test("It should return StatusCode 400 if email is not valid or found", async () => {
@@ -32,11 +32,33 @@ describe("/login/:email (POST)", () => {
   });
 
   test("It should return StatusCode 200", async () => {
-    const response = await request(app).post(`/login/${testUser.email}`);
+    const response = await request(app).post(`/login/${mockUser.email}`);
     expect(response.statusCode).toBe(200);
   });
 });
 
-describe("/pool/user/:userId (POST)", () => {
-  test("", async () => {});
+describe("/pool/user/:userId (GET)", () => {
+  test("Validates that a User is created without a pool", async () => {
+    const response = await request(app).get(`/pool/user/${mockUser.id}`);
+    expect(response.body.pools.length).toBe(0);
+  });
+});
+
+describe("/pool/user/:userId (Post)", () => {
+  test("Validates that pools can be created successfully", async () => {
+    const response = await request(app).post(`/pool/user/${mockUser.id}`);
+    expect(response.body.pools.length).toBe(1);
+  });
+});
+
+describe("/user/:userId (DELETE)", () => {
+  test("It should return Bad Request 400 if provided invalid user id", async () => {
+    const response = await request(app).delete(`/user/-1`);
+    expect(response.statusCode).toBe(400);
+  });
+
+  test("It should delete the user", async () => {
+    const response = await request(app).delete(`/user/${mockUser.id}`);
+    expect(response.statusCode).toBe(204);
+  });
 });

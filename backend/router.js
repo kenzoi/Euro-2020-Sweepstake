@@ -12,6 +12,7 @@ const router = new Router();
 router.post("/login/:email", loginController.login);
 
 router.post("/user", userController.createUser);
+router.delete("/user/:userId", userController.deleteUser);
 
 router.post("/pool/user/:userId", poolController.createPool);
 router.get("/pool/user/:userId", poolController.getPools);
