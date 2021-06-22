@@ -30,8 +30,9 @@ Build a portal to manage sweepstakes for the Euro 2020 tournament, utimately to 
 ## Setup
 
 Sign up for an account on https://www.api-football.com/ and create a dotenv file using the example.\
-Backend: `npm install && docker-compose up -d && npm run dev`\
-Frontend: `cd frontend && yarn && yarn start`
+Root folder: `npm install && docker-compose up`\
+Backend: `cd backend && npm install && npm run dev`\
+Frontend: `cd frontend && npm install && npm start`
 
 Live version to be provided in the future...
 
