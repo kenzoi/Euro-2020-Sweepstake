@@ -9,7 +9,7 @@ const createUser = async (req, res) => {
         email,
         name,
       });
-      res.status(200).json(user);
+      res.status(201).json(user);
     }
   } catch (e) {
     // eslint-disable-next-line no-console
