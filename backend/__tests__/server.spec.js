@@ -13,7 +13,7 @@ const mockPool = {
   nanoId: "",
 };
 
-describe("/user (POST)", () => {
+describe("POST /user", () => {
   test("It should return StatusCode 400 if no email or name is provided", async () => {
     const response = await request(app).post("/user");
     expect(response.statusCode).toBe(400);
@@ -29,7 +29,7 @@ describe("/user (POST)", () => {
   });
 });
 
-describe("/login/:email (POST)", () => {
+describe("POST /login/:email", () => {
   test("It should return StatusCode 400 if email is not valid or found", async () => {
     const response = await request(app).post("/login/fakeEmail");
     expect(response.statusCode).toBe(400);
@@ -41,14 +41,14 @@ describe("/login/:email (POST)", () => {
   });
 });
 
-describe("/pool/user/:userId (GET)", () => {
+describe("GET /pool/user/:userId", () => {
   test("Validates that a User is created without a pool", async () => {
     const response = await request(app).get(`/pool/user/${mockUser.id}`);
     expect(response.body.pools.length).toBe(0);
   });
 });
 
-describe("/pool/user/:userId (Post)", () => {
+describe("POST /pool/user/:userId", () => {
   test("Validates that pools can be created successfully", async () => {
     const response = await request(app).post(`/pool/user/${mockUser.id}`);
     mockPool.nanoId = response.body.pools[0].nanoId; // Store the nanoId to be used in the nexts tests
@@ -61,7 +61,7 @@ describe("/pool/user/:userId (Post)", () => {
   });
 });
 
-describe("/pool/:nanoId/user/:userId (POST)", () => {
+describe("POST /pool/:nanoId/user/:userId", () => {
   test("It should add user to a pool", async () => {
     const poolJoinUser = await request(app)
       .post("/user")
@@ -76,7 +76,7 @@ describe("/pool/:nanoId/user/:userId (POST)", () => {
   });
 });
 
-describe("/user/:userId (DELETE)", () => {
+describe("DELETE /user/:userId", () => {
   test("It should return Bad Request 400 if provided invalid user id", async () => {
     const response = await request(app).delete(`/user/-1`);
     expect(response.statusCode).toBe(400);
@@ -88,7 +88,7 @@ describe("/user/:userId (DELETE)", () => {
   });
 });
 
-describe("/match (GET)", () => {
+describe("GET /match", () => {
   test("It should respond with status code 200", async () => {
     const response = await request(app).get("/match");
     expect(response.statusCode).toBe(200);
@@ -107,7 +107,7 @@ describe("/match (GET)", () => {
   });
 });
 
-describe("/result (GET)", () => {
+describe("GET /result", () => {
   test("It should respond with status code 200", async () => {
     const response = await request(app).get("/result");
     expect(response.statusCode).toBe(200);
