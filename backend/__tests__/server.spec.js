@@ -49,6 +49,11 @@ describe("/pool/user/:userId (Post)", () => {
     const response = await request(app).post(`/pool/user/${mockUser.id}`);
     expect(response.body.pools.length).toBe(1);
   });
+
+  test("It should return StatusCode 201", async () => {
+    const response = await request(app).post(`/pool/user/${mockUser.id}`);
+    expect(response.statusCode).toBe(201);
+  });
 });
 
 describe("/user/:userId (DELETE)", () => {

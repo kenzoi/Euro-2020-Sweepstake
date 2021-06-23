@@ -14,7 +14,7 @@ const createPool = async (req, res) => {
     });
     await pool.addUser(user, { through: { owner: true } });
     const pools = await db.user.findOne(poolQuery(userId));
-    res.status(200).json(pools);
+    res.status(201).json(pools);
   } catch (e) {
     // eslint-disable-next-line no-console
     console.log(e);
