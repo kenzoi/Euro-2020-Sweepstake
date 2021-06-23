@@ -38,14 +38,7 @@ const updatePredictions = async (req, res) => {
       }));
       db.prediction.bulkCreate(data, {
         fields: ["id", "homeScore", "awayScore", "matchId", "userId", "poolId"],
-        updateOnDuplicate: [
-          "homeScore",
-          "awayScore",
-          "matchId",
-          "userId",
-          "poolId",
-          "updatedAt",
-        ],
+        updateOnDuplicate: ["homeScore", "awayScore", "updatedAt"],
       });
       res.status(200).json({ message: "Success" });
     } else {
