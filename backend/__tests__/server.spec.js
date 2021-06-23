@@ -86,3 +86,25 @@ describe("/match (GET)", () => {
     );
   });
 });
+
+describe("/result (GET)", () => {
+  test("It should respond with status code 200", async () => {
+    const response = await request(app).get("/result");
+    expect(response.statusCode).toBe(200);
+  });
+
+  test("It should respond with the matches", async () => {
+    const response = await request(app).get("/result");
+    expect(response.body).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          id: expect.any(Number),
+          result: expect.objectContaining({
+            homeScore: expect.any(Number),
+            awayScore: expect.any(Number),
+          }),
+        }),
+      ])
+    );
+  });
+});
