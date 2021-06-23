@@ -67,3 +67,22 @@ describe("/user/:userId (DELETE)", () => {
     expect(response.statusCode).toBe(204);
   });
 });
+
+describe("/match (GET)", () => {
+  test("It should respond with status code 200", async () => {
+    const response = await request(app).get("/match");
+    expect(response.statusCode).toBe(200);
+  });
+
+  test("It should respond with the matches", async () => {
+    const response = await request(app).get("/match");
+    expect(response.body).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          id: expect.any(Number),
+          kickoff: expect.any(String),
+        }),
+      ])
+    );
+  });
+});

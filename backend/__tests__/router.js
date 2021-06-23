@@ -111,10 +111,3 @@ describe("/leaderboard/:nanoId", () => {
     expect(leaderboardController.getLeaderboard).toHaveBeenCalledTimes(1);
   });
 });
-
-// test("It should respond with an array", async () => {
-//   const response = await request(app).get("/pool/user/1");
-//   expect(response.body).toEqual(
-//     expect.objectContaining({ pools: expect.any(Array) })
-//   );
-// });
