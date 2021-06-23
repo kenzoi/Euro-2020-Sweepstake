@@ -6,7 +6,6 @@ import { login } from "../../httpClient/axios";
 
 jest.mock("../../httpClient/axios");
 
-
 describe("Home React Component", () => {
   test("tests if submit has been clicked once", async () => {
     login.mockResolvedValue({ data: "foo" });
@@ -31,5 +30,4 @@ describe("Home React Component", () => {
 
     expect(login).toHaveBeenCalledWith(fakeUser);
   });
-
 });

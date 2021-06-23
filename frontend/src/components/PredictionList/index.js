@@ -27,20 +27,6 @@ function PredictionList() {
 
   const { userid, pool } = useParams();
 
-  useEffect(() => {
-    (async () => {
-      const res = await getPredictions(pool, userid);
-      const matchData = !!res.data
-        ? withPredictions(res.data.predictions)
-        : await withoutPredictions();
-      const dataObj = matchData.reduce((acc, curr) => {
-        // eslint-disable-next-line no-sequences
-        return (acc[curr.id] = curr), acc;
-      }, {});
-      setData(dataObj);
-    })();
-  }, [pool, userid]);
-
   const withPredictions = (data) => {
     setHasPrediction(true);
     return data.map((prediction) => ({
@@ -61,6 +47,20 @@ function PredictionList() {
       awayScore: 0,
     }));
   };
+
+  useEffect(() => {
+    (async () => {
+      const res = await getPredictions(pool, userid);
+      const matchData = !!res.data
+        ? withPredictions(res.data.predictions)
+        : await withoutPredictions();
+        // eslint-disable-next-line no-sequences
+      const dataObj = matchData.reduce((acc, curr) => {
+        return (acc[curr.id] = curr), acc;
+      }, {});
+      setData(dataObj);
+    })();
+  }, [pool, userid]);
 
   const handleSubmit = async () => {
     const dataArr = Object.values(data);

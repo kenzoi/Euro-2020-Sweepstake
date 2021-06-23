@@ -1,48 +1,35 @@
 import axios from "axios";
 
-// const base_url = process.env.REACT_APP_BACKEND_API_HOST;
-const base_url = "http://localhost:3005";
+const baseUrl = "http://localhost:3005";
 
-export const getMatches = () => {
-  return axios.get(`${base_url}/match`);
-};
+export const getMatches = () => axios.get(`${baseUrl}/match`);
 
-export const getPredictions = (pool, user) => {
-  return axios.get(`${base_url}/prediction/${pool}/user/${user}`);
-};
+export const getPredictions = (pool, user) =>
+  axios.get(`${baseUrl}/prediction/${pool}/user/${user}`);
 
-export const postPredictions = (pool, user, predictions) => {
-  return axios.post(`${base_url}/prediction/${pool}/user/${user}`, {
+export const postPredictions = (pool, user, predictions) =>
+  axios.post(`${baseUrl}/prediction/${pool}/user/${user}`, {
     data: {
       predictions,
     },
   });
-};
 
-export const putPredictions = (pool, user, predictions) => {
-  return axios.put(`${base_url}/prediction/${pool}/user/${user}`, {
+export const putPredictions = (pool, user, predictions) =>
+  axios.put(`${baseUrl}/prediction/${pool}/user/${user}`, {
     data: {
       predictions,
     },
   });
-};
 
-export const getPools = (userId) => {
-  return axios.get(`${base_url}/pool/user/${userId}`);
-};
+export const getPools = (userId) => axios.get(`${baseUrl}/pool/user/${userId}`);
 
-export const postCreatePool = (userId) => {
-  return axios.post(`${base_url}/pool/user/${userId}`);
-};
+export const postCreatePool = (userId) =>
+  axios.post(`${baseUrl}/pool/user/${userId}`);
 
-export const postJoinPool = (poolId, userId) => {
-  return axios.post(`${base_url}/pool/${poolId}/user/${userId}`);
-};
+export const postJoinPool = (poolId, userId) =>
+  axios.post(`${baseUrl}/pool/${poolId}/user/${userId}`);
 
-export const getLeaderboard = (nanoId) => {
-  return axios.get(`${base_url}/leaderboard/${nanoId}`);
-};
+export const getLeaderboard = (nanoId) =>
+  axios.get(`${baseUrl}/leaderboard/${nanoId}`);
 
-export const login = (user) => {
-  return axios.post(`${base_url}/login/${user}`);
-};
+export const login = (user) => axios.post(`${baseUrl}/login/${user}`);

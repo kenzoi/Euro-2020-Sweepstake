@@ -29,8 +29,8 @@ function Profile() {
     try {
       const res = await postJoinPool(poolText, userid);
       setData(res.data.pools);
-    } catch (e) {
-      console.log(e);
+    } catch (err) {
+      console.log(err);
     }
     setPoolText("");
   };

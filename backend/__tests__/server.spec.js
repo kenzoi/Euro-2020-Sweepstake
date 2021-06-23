@@ -22,7 +22,7 @@ describe("POST /user", () => {
   test("It should create an user and return the new created user", async () => {
     const response = await request(app)
       .post("/user")
-      .send({ name: "test", email: "test@test.com" });
+      .send({ name: mockUser.name, email: mockUser.email });
     expect(response.statusCode).toBe(201);
     expect(response.body).toHaveProperty("id");
     mockUser.id = response.body.id; // Store the user Id to be used in the nexts tests
