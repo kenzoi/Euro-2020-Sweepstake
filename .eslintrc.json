@@ -3,13 +3,14 @@
     "browser": true,
     "commonjs": true,
     "es2021": true,
-    "jest": true
+    "jest": true,
+    "cypress/globals": true
   },
   "extends": ["airbnb-base", "prettier"],
   "parserOptions": {
     "ecmaVersion": 12
   },
-  "plugins": ["prettier"],
+  "plugins": ["prettier", "cypress"],
   "rules": {
     "prettier/prettier": "error"
   }
