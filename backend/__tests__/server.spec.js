@@ -9,6 +9,10 @@ const mockUser = {
   id: "",
 };
 
+const mockPool = {
+  nanoId: "",
+};
+
 describe("/user (POST)", () => {
   test("It should return StatusCode 400 if no email or name is provided", async () => {
     const response = await request(app).post("/user");
@@ -21,7 +25,7 @@ describe("/user (POST)", () => {
       .send({ name: "test", email: "test@test.com" });
     expect(response.statusCode).toBe(201);
     expect(response.body).toHaveProperty("id");
-    mockUser.id = response.body.id;
+    mockUser.id = response.body.id; // Store the user Id to be used in the nexts tests
   });
 });
 
@@ -47,12 +51,28 @@ describe("/pool/user/:userId (GET)", () => {
 describe("/pool/user/:userId (Post)", () => {
   test("Validates that pools can be created successfully", async () => {
     const response = await request(app).post(`/pool/user/${mockUser.id}`);
+    mockPool.nanoId = response.body.pools[0].nanoId; // Store the nanoId to be used in the nexts tests
     expect(response.body.pools.length).toBe(1);
   });
 
   test("It should return StatusCode 201", async () => {
     const response = await request(app).post(`/pool/user/${mockUser.id}`);
     expect(response.statusCode).toBe(201);
+  });
+});
+
+describe("/pool/:nanoId/user/:userId (POST)", () => {
+  test("It should add user to a pool", async () => {
+    const poolJoinUser = await request(app)
+      .post("/user")
+      .send({ name: "pooljoinUser", email: "poolJoinUser@test.com" });
+
+    const response = await request(app).post(
+      `/pool/${mockPool.nanoId}/user/${poolJoinUser.body.id}`
+    );
+    expect(response.statusCode).toBe(200);
+
+    await request(app).delete(`/user/${poolJoinUser.body.id}`);
   });
 });
 
